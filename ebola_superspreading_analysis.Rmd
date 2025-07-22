@@ -1,0 +1,112 @@
+---
+title: "Ebola Superspreading Analysis"
+author: "Oluwatobi Olatunbosun"
+date: "`r Sys.Date()`"
+output:
+  html_document: default
+  word_document: default
+  pdf_document: default
+editor_options:
+  markdown:
+    wrap: 72
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+```
+
+## 1. Load Libraries
+
+```{r load-libraries}
+library(epicontacts)
+library(fitdistrplus)
+library(superspreading)
+library(tidyverse)
+library(outbreaks)
+```
+
+## 2. Load and Prepare Ebola Data
+
+```{r load-data}
+# Retrieve Ebola simulated line list and contacts data
+ebola_linelist <- outbreaks::ebola_sim_clean$linelist
+ebola_contact <- outbreaks::ebola_sim_clean$contacts
+
+# Create an epicontacts object
+ebola_epicontacts <- epicontacts::make_epicontacts(
+  linelist = ebola_linelist,
+  contacts = ebola_contact,
+  directed = TRUE
+)
+```
+
+## 3. Visualize the Contact Network
+
+```{r plot-epicontacts}
+# Plot the contact network
+plot(ebola_epicontacts)
+```
+
+## 4. Analyze Secondary Cases (Out-Degree)
+
+```{r secondary-cases}
+# Get secondary case counts (number of people each case infected)
+secondary_cases <- epicontacts::get_degree(
+  x = ebola_epicontacts,
+  type = "out",
+  only_linelist = TRUE
+)
+
+# Print secondary cases
+secondary_cases
+```
+
+## 5. Plot Degree Distribution
+
+```{r plot-distribution}
+# Histogram of secondary cases
+hist(secondary_cases, 
+     breaks = 30,
+     main = "Degree Distribution of Secondary Cases",
+     xlab = "Number of Secondary Cases",
+     ylab = "Frequency",
+     col = "lightblue",
+     border = "black")
+```
+
+## 6. Fit a Negative Binomial Distribution
+
+```{r fit-nbinom}
+# Fit negative binomial to secondary cases
+fitnb <- fitdistrplus::fitdist(secondary_cases, "nbinom")
+print(fitnb)
+```
+
+> The negative binomial distribution is characterized by two
+> parameters: - `size` (k): Dispersion parameter - `mu`: Mean number of
+> secondary cases
+>
+> Example estimates might look like: - size = 0.854 - mu = 0.368
+
+## 7. Superspreading Risk Assessment
+
+```{r superspreading}
+# Estimate probability of clusters from backward tracing
+superspreading::proportion_cluster_size(
+  R = fitnb$estimate["mu"],
+  k = fitnb$estimate["size"],
+  cluster_size = c(5, 10, 15)
+)
+```
+
+## 8. Interpretation
+
+> Using the estimated parameters (R ≈ 0.368, k ≈ 0.854), the chance of a
+> backward-traced case causing: - ≥5 secondary cases: \~2.6% - ≥10 or
+> ≥15 secondary cases: near 0%
+>
+> ### 📌 Implication:
+>
+> Backward tracing likely provides limited added value for containing
+> Ebola transmission in this scenario, as the superspreading potential
+> is low.

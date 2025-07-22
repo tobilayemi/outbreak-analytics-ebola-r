@@ -1,0 +1,1314 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Ebola Superspreading Analysis},
+  pdfauthor={Oluwatobi Olatunbosun},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Ebola Superspreading Analysis}
+\author{Oluwatobi Olatunbosun}
+\date{2025-07-22}
+
+\begin{document}
+\maketitle
+
+\subsection{1. Load Libraries}\label{load-libraries}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(epicontacts)}
+\FunctionTok{library}\NormalTok{(fitdistrplus)}
+\FunctionTok{library}\NormalTok{(superspreading)}
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(outbreaks)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{2. Load and Prepare Ebola
+Data}\label{load-and-prepare-ebola-data}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Retrieve Ebola simulated line list and contacts data}
+\NormalTok{ebola\_linelist }\OtherTok{\textless{}{-}}\NormalTok{ outbreaks}\SpecialCharTok{::}\NormalTok{ebola\_sim\_clean}\SpecialCharTok{$}\NormalTok{linelist}
+\NormalTok{ebola\_contact }\OtherTok{\textless{}{-}}\NormalTok{ outbreaks}\SpecialCharTok{::}\NormalTok{ebola\_sim\_clean}\SpecialCharTok{$}\NormalTok{contacts}
+
+\CommentTok{\# Create an epicontacts object}
+\NormalTok{ebola\_epicontacts }\OtherTok{\textless{}{-}}\NormalTok{ epicontacts}\SpecialCharTok{::}\FunctionTok{make\_epicontacts}\NormalTok{(}
+  \AttributeTok{linelist =}\NormalTok{ ebola\_linelist,}
+  \AttributeTok{contacts =}\NormalTok{ ebola\_contact,}
+  \AttributeTok{directed =} \ConstantTok{TRUE}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{3. Visualize the Contact
+Network}\label{visualize-the-contact-network}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Plot the contact network}
+\FunctionTok{plot}\NormalTok{(ebola\_epicontacts)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ebola_superspreading_analysis_files/figure-latex/plot-epicontacts-1.pdf}}
+
+\subsection{4. Analyze Secondary Cases
+(Out-Degree)}\label{analyze-secondary-cases-out-degree}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Get secondary case counts (number of people each case infected)}
+\NormalTok{secondary\_cases }\OtherTok{\textless{}{-}}\NormalTok{ epicontacts}\SpecialCharTok{::}\FunctionTok{get\_degree}\NormalTok{(}
+  \AttributeTok{x =}\NormalTok{ ebola\_epicontacts,}
+  \AttributeTok{type =} \StringTok{"out"}\NormalTok{,}
+  \AttributeTok{only\_linelist =} \ConstantTok{TRUE}
+\NormalTok{)}
+
+\CommentTok{\# Print secondary cases}
+\NormalTok{secondary\_cases}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## d1fafd 53371b f5c3d8 6c286a 0f58c4 49731d f9149b 881bd4 e66fa4 20b688 40ae5f 
+##      1      0      2      0      1      0      3      0      0      3      1 
+## f547d6 f1f60f d58402 d8a13d a3c8b8 2ae019 974bc1 6a9004 72b905 b8f2fd 09e386 
+##      3      1      1      0      0      2      0      0      0      0      0 
+## 8689b7 6285c9 865581 5fe599 79ad06 9d4019 c43190 900021 102363 11f8ea dce5cc 
+##      0      0      0      0      0      0      0      0      1      5      0 
+## d4ff47 b8812a 4b38b7 f96aa5 893f25 be99c8 c29eb5 bc9ace 49d786 e7ee34 c4e706 
+##      0      0      1      0      1      0      1      1      1      0      1 
+## 76b97a 5ed02c e02f66 bd8c0e 0445d8 d0523a 47a5f5 4b9ead dae8c7 9e0998 ac6fdf 
+##      1      0      1      3      0      0      0      0      1      0      0 
+## 566f9e acf422 275cc7 56d39e d2f586 07e3e8 133ee7 1a4ac9 7be92f 5387a2 96e309 
+##      0      0      0      0      0      2      2      0      0      1      0 
+## db4b96 1511c5 80663c 8a4580 968888 dbebea 369449 1d7c8a dfdf88 ab034a be6c4b 
+##      0      1      0      0      0      1      1      0      0      0      0 
+## 3680d3 f393b4 30c98c 30574c 5837cf 1389ca 7e95d1 788a99 2b8773 9f6884 e85785 
+##      0      0      1      0      1      0      1      0      0      1      0 
+## 2978ac 211b45 60f0c2 fc05c1 88f67f 8f227d 50adde 6fa4bf a3c50c d6f195 7b82a8 
+##      0      0      0      0      0      0      0      0      0      0      0 
+## e0fb09 9f5d3b 31b9f9 e61cb9 3002bc 37a6f6 57a565 057e7a 4cff96 be502d bab455 
+##      0      0      0      1      0      2      0      2      0      1      0 
+## 9ae2d7 fc15ef 2eaa9a 528572 e33327 a48f5d a6c614 8e104d 3ef3d9 c15f36 c97dd9 
+##      0      0      0      2      0      0      2      1      0      1      0 
+## bbfa93 02d8fd af9f9a 01fcc4 2ebf95 88eff2 c36eb4 47ebbc db5a62 bd14fc 922012 
+##      0      4      0      0      0      0      1      0      0      0      0 
+## 88a4e0 542d07 f50e8a 821030 70baad d36a83 9e74c4 3a7673 7b7f62 e4bee8 ae96ac 
+##      0      1      0      1      0      0      0      0      0      1      0 
+## 0082bf daddbc 589e9f 341efa f86ce2 2afc42 cd2dd3 3cf6cf df4951 7f5a01 920c1b 
+##      0      0      0      0      0      1      0      0      1      0      0 
+## 6c2783 61cf79 ddddee e33ec5 8940e5 c9e790 99e8fa af1c1f acbbf6 ea7119 c9bb92 
+##      0      0      0      0      1      0      0      2      0      0      0 
+## fdeb61 9f41d3 bc648d ec8ee4 ab78c0 8ea7f8 f81c5e 567136 c62127 e5ee23 797b15 
+##      0      0      0      0      0      1      0      1      0      0      0 
+## 0ae14e d9fce7 b799eb 0fb364 f648f5 dd20a4 fce46c 67184b f1d5e5 71577a 92b1ef 
+##      1      0      2      0      0      0      0      0      0      4      0 
+## 895618 b0c500 72a142 a6ff85 a8180e 43dbe6 f700ff 415e3a c2e83e afe616 eabb2a 
+##      0      3      0      0      1      0      0      2      0      0      0 
+## 5400a2 d33032 564653 df3a12 ceed40 9371a9 bc2adf e27816 aa2a57 8cd47f 9c688b 
+##      1      0      1      1      0      0      1      0      0      0      0 
+## 170473 d0dbe0 c57efb 3e6957 403057 188c88 f3881f 82c2d2 f15aec c2f1cf abd4af 
+##      0      0      0      1      1      0      0      0      0      0      0 
+## f0461f 569a34 a33e38 7fd086 f327be 959170 576d23 f531eb dec212 823533 1c1848 
+##      0      0      1      3      0      0      0      2      0      1      0 
+## 42e1a9 006e2f 90e5fe 8ebf6e 06fd73 542fcc f8318d 64c8ef 45a9ab 0b46a0 8c9de8 
+##      0      1      0      1      1      1      0      1      0      0      0 
+## dd9d20 e56412 66f2cd 3c09c4 6d788e 916d0a d0eead 835e68 c5f2fb f29067 8e776a 
+##      1      0      1      0      0      6      3      0      1      0      0 
+## 7ee3ea 67b897 a47529 cfd79c c7f0e6 eeadcf 704a5e d145b7 10eefc 2057a1 88306e 
+##      1      2      0      3      0      0      0      1      0      0      0 
+## 67be4e 188619 62a2ef 021718 d6867c 26c588 23b6a6 52ea64 da8ecb 92ab68 a42ade 
+##      1      0      1      1      1      1      0      1      0      0      0 
+## 148f18 4c1040 0cf4fb 401e94 989ed6 7f153f a9feb3 d6584f 58b968 f36729 f81362 
+##      0      0      0      0      0      0      0      1      0      0      0 
+## 1cf6fc fe06e6 f9e20a 7a17c7 6670a5 2cb9a5 9db018 3bcd28 02db47 31467e b408cb 
+##      0      0      0      0      0      0      1      0      0      0      0 
+## 386dfb def13f fd2ea2 bc3392 342b03 f5c142 3f5a00 3ad520 700448 a05efe 0e6834 
+##      0      0      1      0      0      2      0      0      1      0      0 
+## 2390e8 ce4ec6 92ddf7 886626 69446e eae3e8 c76676 b6237e 7ff746 51b8e2 7e3dab 
+##      0      2      0      0      0      1      0      0      0      0      0 
+## 70a9fe 1f1620 ac683a df7c34 0b7666 9b8ec4 ae50c8 062638 9735dc 917506 baacc1 
+##      0      0      1      1      1      0      0      0      0      0      1 
+## 8d11a4 2a2ca0 36f228 896214 171c5d 583717 781b3a 38d740 90dc67 2894b2 c2595d 
+##      0      2      0      0      0      1      0      1      1      0      1 
+## ded352 158459 ae4a36 f5e184 51cf15 b7641e 0a9827 2ed605 770e5e 0277c7 b013ab 
+##      0      0      0      0      0      1      0      0      2      0      0 
+## 19e1d4 3db8ed 8637e7 9d69e4 1e1825 497372 9fcf61 06ccaa f77573 c8b7a1 174288 
+##      0      0      1      0      0      0      1      0      0      0      1 
+## 8a1feb 3b8407 77afbe c6d29c 60158e 44c12d d79494 23e499 db7b54 09a68f de1c99 
+##      1      2      1      0      0      0      0      0      1      1      0 
+## 1e26db 0cd7d3 4d9fa7 c5bc73 3789ee c8c030 14224c c5d4ec c71dcd 292db2 d2d95d 
+##      0      0      1      0      1      0      0      0      1      0      0 
+## 3546f6 b38db1 8c1915 792590 24f9d8 cb9e72 86845e 38cc4a cc7393 069ea8 d9f1b9 
+##      0      0      0      0      1      0      0      1      0      0      1 
+## 8188cd 6a3ea1 e71272 30dc63 1e061f 70e40f b6a6c7 0f5c6e 34cd90 8bfb52 01c442 
+##      0      1      0      1      0      0      0      0      1      0      0 
+## 62cdc2 085802 53f4ae b56849 316781 a81f7d 6b70f0 675f57 730b25 111d92 fb2536 
+##      0      2      1      1      0      1      0      1      0      0      0 
+## fd01de c03424 001ecc 13f887 b24bb3 422831 df2113 2b36fa 72bb4b bbbd13 1f8797 
+##      0      0      0      0      1      1      0      2      0      0      1 
+## c13247 b6c0ed 059cc0 ee65e4 e0894e d9e72d d325d9 517931 eea609 90360f 52f612 
+##      1      1      1      0      0      1      1      0      1      1      0 
+## 064dc0 68623f bd0983 1a9636 4b501e 6f8d06 b801a2 839761 30ed05 e0efe5 472fef 
+##      2      2      0      0      2      1      0      0      0      1      0 
+## 1d1d8e 9cd6d0 5c1d6e a41ea4 5b2dd9 64e8e6 42022a 5a782d 35ab60 c34e48 fc7155 
+##      0      1      0      0      1      0      0      1      2      1      0 
+## b18be6 df8dbb b2a4f5 9f0c37 571076 969b08 19bb49 e93b86 a5307c d49d6c 2d4c92 
+##      0      0      0      1      2      0      1      1      1      0      1 
+## 4221c9 ccba7c 5b1d5e 42663b 4ade58 f97626 834a39 6e3e1b 665aa3 82b823 281dd1 
+##      0      1      0      0      0      2      0      0      1      0      1 
+## 7d99f2 6dca26 aecc48 ce6c0d 579c1d 5bddef 8e6dc1 dbe763 b44247 1552a3 305a1e 
+##      0      1      0      0      0      0      0      0      1      0      0 
+## a2e5d2 267434 9cc857 8e455c 890447 82fe4d 75ba0b c2b809 92e129 034a98 590dc9 
+##      0      0      0      0      0      0      0      0      2      0      0 
+## d6a409 e13621 426446 29ea50 2999ed 866488 06e8de 332efa fc969c 5037a5 699cea 
+##      0      2      0      1      0      0      0      0      0      0      0 
+## 108b95 6207c2 4fc4c3 18f408 ba7db9 babc2d 6963ab 7c056b 0e705a a4da16 74bfe4 
+##      1      0      0      0      1      0      0      0      1      0      0 
+## dab5bd a2b14c 27adef d8c398 a8214f feea26 582196 d5f3c0 c094f6 a905b2 3d9364 
+##      1      0      0      1      0      0      0      0      0      1      0 
+## 8dbd02 f9e3c4 ad3141 01230c 00dd75 f750fe c9e824 a40341 1bdf6f 5c3fb4 bbdbda 
+##      0      0      1      0      0      0      2      0      0      2      0 
+## 55f73f fa058c aeee08 096455 bb360f 21dc16 38d7b2 83b446 e15861 c41648 e5935b 
+##      0      0      0      0      0      1      0      0      0      0      0 
+## bd5a25 818a12 f13395 d66413 eb0e7c 46e52d e01b69 469367 4178d1 2965bd b03473 
+##      0      2      3      0      1      1      0      0      1      0      0 
+## b8fe69 7d8f6b af9abd 6c1669 c96992 c9fc3d b016e0 f36b95 ef1f68 a005bf 3e7820 
+##      0      0      0      0      0      2      1      0      0      0      0 
+## 4a5d1a 2cfb2f b3f687 46ba9d 8b4b24 d75fe5 d2ad03 90d7c3 eaf447 d8e8cd 3c3367 
+##      0      1      0      0      1      1      0      0      1      1      0 
+## d2be27 6af269 c8c4d5 828cdc 5f8013 93bcfc 8898e5 264472 bdb1a2 fd7cfd 8e085c 
+##      1      0      4      1      0      0      0      0      3      0      1 
+## cdc233 c5a328 d6c6fa 337df1 2c7786 baa64c 9a9a84 3ee0db f87eb8 46eae7 2feb68 
+##      0      0      0      0      0      1      4      0      0      0      0 
+## 44de7a 9b2957 088b66 a94c67 ad8c07 a674c8 174e87 92d002 f7957d 2746fe 88632e 
+##      0      0      1      0      2      0      1      2      0      0      0 
+## 3f8c8c d3da33 f65235 7276c8 240da4 c4c05a 5cbd2f 4618c1 2763fd e9c49d a6c499 
+##      1      0      0      1      0      1      2      2      1      0      1 
+## 7d25a6 0c7a9b 2416e5 f06a8a 2d864d 68caa7 c6d726 a3a599 a182a5 564652 890de4 
+##      1      1      0      0      0      0      0      0      1      1      1 
+## f830d5 6856f4 3dcaaa a4e1a8 034b46 659025 49e2eb cd76e0 f8ab8f 640da5 655d6c 
+##      0      0      0      1      0      0      0      1      0      1      2 
+## 08fa30 c63d35 92ac32 0fc866 63bc2e 8ebf51 37d5ba cc71ea 948d51 94144a 7b6a3c 
+##      0      0      0      0      0      2      0      0      0      0      1 
+## 7a84e1 c94b98 840a9a 6403bd 9f9fd5 cf6c0e 9ba10f 544af7 7b7d83 3bbcd7 320198 
+##      2      1      2      1      0      2      1      1      0      0      0 
+## 3c0ca7 91247c cb451c 6ca927 68f4a0 a5f628 3de974 c3ba87 e8c235 9849ee 754429 
+##      0      0      1      0      1      1      0      0      0      0      0 
+## b3f614 ffe2ec 875dd1 13bc7a b2333b 6696ec 1eb9b6 3f5fe1 1aa3cf effb9d 568050 
+##      0      0      0      0      0      1      0      0      2      0      0 
+## 7b46ff 374fb5 563994 e8c88c 294457 d11927 e596ab 4fb46f 9d70c3 d24787 6a87ca 
+##      0      1      1      0      0      1      1      0      0      0      0 
+## 932c54 a52437 322dfe e444ca e7dcdd 269ddd f61980 cfae3b 036b0d cb48bf 7f8dd2 
+##      0      0      0      0      1      1      0      0      0      1      0 
+## 5faceb 5c5a0e 2abc5b 0223d3 47d0b3 7a7629 9ef8ed c53f9c 198a37 bb2398 10b627 
+##      0      0      0      0      0      0      0      0      1      1      0 
+## f51a50 3f3a40 2e9570 884f1c 18a089 2591c9 4753ca 9c8045 32118a 8b33bc 86b3df 
+##      1      0      0      0      0      0      0      1      0      2      0 
+## defa28 32c4d7 e12efa c1eb6f 2f2ebc ad2c76 31b710 2d42a8 3d26f2 305c08 ed1033 
+##      0      3      1      0      1      0      1      0      2      0      0 
+## 2b73f4 c86866 5f5f78 c5caa6 ab27c7 480eea 63618e 55d542 141102 86d2f0 3457f6 
+##      0      0      0      2      0      1      0      1      1      0      1 
+## d73b9d bb299f 96a12a 20b07b ed3983 265c28 839951 d3907d 0f7452 d8e226 31cd66 
+##      0      1      1      0      0      2      0      0      1      0      0 
+## 31e797 573a83 9eed85 c432cd fc674d 70230e 0afd15 b3c066 09b61b 75a20a 12d3e5 
+##      1      1      0      1      2      0      0      1      0      0      1 
+## db97c6 a17a22 55d2a7 47eb8b 6e3dfe c1bb8a 0a07b5 3c5404 f2e84b 63610a 9d20d6 
+##      0      0      0      1      2      0      0      1      0      1      0 
+## 31b6f4 eeee61 c44cba fa03ea e6d478 97c128 607956 ac760b bb791f ed514e edc86c 
+##      0      0      1      0      0      0      1      0      0      0      0 
+## 9b4647 6f045a bec959 2da0cc 64f737 7801c6 0ec3fb de6cfc d29e8c 2f862f 56a617 
+##      0      0      0      0      0      1      1      0      0      0      1 
+## daec42 378436 1234bb 3dca80 61c40f 911db7 805ca4 3f590f c42468 6647f1 544bd1 
+##      1      1      1      0      0      0      0      0      0      0      0 
+## c68c23 d7a0dd 852f36 9df68c 944fd9 a5a004 ea2955 5abcf9 e0c344 314c66 fd9e03 
+##      0      0      0      1      0      0      0      0      1      1      1 
+## 212254 ab06a5 28eea4 a38384 7f1332 b5c984 e7f655 0c97ee b06702 b3203c 3fa147 
+##      0      0      0      1      0      0      0      0      0      0      0 
+## aa3c55 d7a110 2b34d6 8de0e7 352520 be8b45 0bd916 e8bcf6 9f9725 98992e 9854a5 
+##      0      1      1      0      2      0      0      1      0      1      0 
+## fcd62f f72284 9acb86 034082 c10877 635fd7 b694b3 e90722 61fcce ba0bd3 1f954e 
+##      0      0      4      0      0      0      0      2      0      1      0 
+## a11d21 bcf93e a4f245 ce9888 1d9907 fa8d63 9b2315 3f7c0b 145445 8bd455 8f0055 
+##      0      0      0      0      0      0      0      0      0      0      1 
+## ecd845 5c8ec9 0d315c cd38d3 7e2732 e898af a759b6 2463fc 5ab9fc c1418a 3efdc1 
+##      0      0      0      2      0      1      1      0      0      0      0 
+## 67fa5e fa5e64 6a9bcc f62965 cc9f7b 88f8aa f775f4 c0bd90 f137aa 111ca6 1ced59 
+##      0      0      1      2      0      0      0      3      0      0      0 
+## c1ff7b 7d0678 e6982a ce13e7 213d39 3c5666 f0251f 42086d 270603 cb7ca3 cf4399 
+##      0      0      0      0      1      0      0      1      1      2      1 
+## 723d2e 9ae82c d50b21 840043 a3b42e f733a0 74f85d 56ceb5 61fd0a bdeb35 9c7fb5 
+##      0      1      1      0      0      0      0      0      1      0      0 
+## dc67b4 96ef04 5eeb7c f71019 2b281d ff00a6 7938cb 0c7850 9ab208 793d75 a67d8e 
+##      0      0      2      1      2      0      1      1      0      0      0 
+## cccca6 953cbc 597f6e d9fd28 ad2bdb 3749ef 0c7e8d 09a876 e3278e 672ab9 74bea1 
+##      0      0      0      0      0      0      0      1      0      2      0 
+## 9a2d0d 61751f c899b0 fcaf3f 05dc7d 7633ea 0755ac bd7b50 9bb8bf 5a792c ce64f7 
+##      0      0      0      0      0      0      0      0      0      0      0 
+## 187c24 cfed8b 6133b9 0f10f4 cf428f 469e19 a26cae 6bf085 15e738 8d7580 707f4e 
+##      0      0      0      1      0      0      0      0      0      0      0 
+## 660b34 511f56 eefd21 ed5a66 f08f3b 49e88d c939ba 730684 aebdac 40ecd2 fd4dd4 
+##      1      0      0      1      0      1      1      0      1      0      1 
+## bf4da8 ff9ddd 95c347 01b1fd de5eab f59fe2 ae0163 9e7f2c 5f8f6c fb1e59 769af3 
+##      0      1      2      0      2      0      0      0      0      0      0 
+## 8426e2 f1a689 4bb524 627db7 21689b ddd916 6a007d c1a925 444590 858426 cc7360 
+##      0      0      0      0      1      1      0      0      0      5      1 
+## 77eb09 09915f 181506 ee82d4 41a390 f90030 b9f2e5 72ea9c 994861 0df8bd 151773 
+##      0      1      0      0      1      0      0      0      0      0      3 
+## 3f8c71 ebb14f 16dcd2 926639 b02c4a 5b6630 eb9efc c35e20 eb7d13 ade678 751025 
+##      0      1      0      1      0      1      0      0      0      0      1 
+## af25ae 9bfc0d a51e77 0adb7e 8b1029 a84993 a3b05a ab2418 8897a6 18ae3d 83e5cd 
+##      0      0      0      0      0      0      0      0      0      1      0 
+## 9c244a 508984 f42008 e9c422 52735e 928154 cdbbfd 59ec09 74f64d 0fde59 e547ab 
+##      1      0      0      0      0      0      0      0      0      4      0 
+## 64a537 bbf32f c4408d 0fe585 027e28 b4bb29 45d75d 363c80 f4bb37 6a5996 0c69a9 
+##      0      1      1      0      3      0      0      0      0      0      0 
+## a8a69f 8939e3 ee70dd 552efe 9e2fb0 ffb30f 407e7e 1154b1 04041a efe8f2 897945 
+##      0      0      0      0      0      0      0      0      0      0      0 
+## 04935b 0d8d9b 8fedec ca1223 b151c5 2dbecc c3ada1 13f839 3c9b29 ffb2d3 8d80da 
+##      0      0      0      0      0      0      0      0      0      0      0 
+## 982559 9feec9 93bb41 08bf40 770220 5faf51 59c557 504452 83d537 45042d cd182c 
+##      0      0      0      1      0      0      0      0      0      1      0 
+## b04d23 c6a69c b48f8f 628fbd d4df19 cad2c1 2f8552 ee5bf1 41d1dc 215cee 7c6980 
+##      1      0      0      0      0      0      2      0      0      0      0 
+## 112c9b 4e27f5 66e4e3 7f62e6 d0288c ac22bf 5a54ea e256c8 6e9925 32f781 aaf754 
+##      0      0      1      1      0      0      0      0      0      3      1 
+## 464b83 8947cf 1bc942 87f699 098ddf 303b01 3b998d 0e7ec8 3c7205 cbbbee 60fa80 
+##      0      0      0      0      1      0      0      0      0      2      0 
+## 318947 4af758 7b9afb 2a812e d05c48 fffa4f e8ffa5 9b5dec 0620d9 b56d86 ed0554 
+##      1      0      0      0      0      1      0      0      0      0      0 
+## 5154ca c9783b 0abbab b1c664 2193f8 4cd617 44d182 db38e1 7acd6f e4af66 f027f8 
+##      0      2      0      1      0      0      0      0      0      0      1 
+## d5d56f e3d90b 8ce67b 10ae4c 6cd9e9 f15ceb 056471 0c7230 282013 64b7b0 28429e 
+##      0      0      0      0      0      0      1      0      2      0      2 
+## 272fb6 67e509 c800a4 5a7acc 99bd62 7ce43b a8c00d ced945 53f02f 32d4ad 96bea3 
+##      0      0      0      2      0      0      1      1      0      1      1 
+## 8afd94 08382e 4b1adb 04a2cd a91508 8a6984 8c2e93 7839d4 3e93ea 4a17d6 5ea6c5 
+##      0      0      0      0      0      0      1      0      0      1      0 
+## eddc4e ab8deb f70e4c f0b93e a49172 3857bf 26aec8 fe2849 8d81ff eadc76 1961e9 
+##      1      0      0      0      0      0      0      0      0      1      0 
+## 474f41 51f606 93adc6 c3cd3c 00086d d6a852 9e495c a4a7ae d7c424 2ae08e 2786b7 
+##      0      1      0      0      0      1      0      2      1      1      0 
+## 3ae04e c37475 8c1837 39223a 81217a e6590f e4b6af 427cd3 3da144 4d87b0 48abb6 
+##      2      0      0      0      1      1      0      0      0      0      0 
+## f5ab74 b38ca8 1dcaff 734753 0d14a0 bd6ed2 830af5 d45263 fc57cc 89a628 914ad2 
+##      0      1      0      0      0      0      2      2      0      0      0 
+## c0c70a 09c9b9 f570e4 e13cd9 363eb4 b458e2 4288fd 268b99 add239 c1e533 70bcb6 
+##      0      0      1      0      0      0      1      0      0      0      1 
+## 9fc6bb 2e70ff ed1a0a fb76e3 85f0fa 0b2579 15d750 c1ee8a 54b10f d78767 c51f04 
+##      0      1      1      1      1      0      0      2      0      0      0 
+## b80a5a ee9a23 a7f48b 53d721 43dea0 8d2424 24ef7d a851f3 9fa063 58cf19 acca05 
+##      0      0      1      2      3      0      0      0      1      0      0 
+## 9f88b9 e61715 f18564 1c5a89 c40cd0 b2f5d7 bb7af6 f5e8d0 a23a64 d3cff4 da1f29 
+##      0      0      1      0      1      1      0      1      0      0      1 
+## 7c67f1 dc1027 b8346e 9711b8 a06123 1747f1 029202 27c07d 2667b6 7ea9a5 4a5f7e 
+##      1      0      0      0      0      0      0      0      0      0      1 
+## a5ea95 a0173e fc6146 c10e49 1a1418 c07362 670a0a bc0b51 8a0025 082607 8f6324 
+##      0      0      0      0      3      0      0      2      2      0      0 
+## 524eaf af46a6 f4a472 b050c7 7b51e1 862f64 82aac6 4cd1eb efa34f 7256ff 2937f6 
+##      0      3      0      1      0      3      0      0      1      0      0 
+## a190d3 d74499 6833d7 b52c9a eefbfa 47eaae 19d49c 14ff8d 271ca3 85d699 2eb309 
+##      1      0      5      0      0      0      1      0      0      0      0 
+## d43684 37c512 187a52 315f76 946a96 911ded 8e1819 414c20 52f06c 79f62b 09a0eb 
+##      0      0      1      1      0      0      0      0      0      0      0 
+## ee4030 420837 41b557 696e71 d07c17 c51081 512f7e 43b220 b49023 a6a35a 45e942 
+##      0      0      0      0      0      0      0      0      1      1      0 
+## 5b1176 f94a8f 1dffed e4511f d9f6dd 251fec f06e87 50076e 812492 0e1974 a10c6f 
+##      0      0      0      0      0      0      1      0      0      0      1 
+## 85c4bf 472b8b 0756b9 3d64c2 f0a4f8 c72be4 261373 363c6e e5cb01 fa9cc3 cddde6 
+##      0      0      0      0      0      1      0      0      1      2      0 
+## 7a14dd deff45 e9e372 92daa4 544c75 978157 43c97c decb2c 29d9da 62048c ed2d8f 
+##      2      3      0      1      0      0      0      0      0      0      0 
+## 7dacd2 35a38e 083766 2ae536 620d08 21c020 e55bce 25f3d9 2f29c3 9bc1ff 52c435 
+##      0      0      0      0      0      0      0      0      2      0      3 
+## 60838b 4d06ed fd9c82 e6f47c 6f5d6a d5091f cd9a93 29235d f1102e 1ea519 ef8b5c 
+##      0      1      2      0      0      0      0      0      1      0      0 
+## b255c3 7fd65e 2a3e15 bf302f 4d4af8 d26ed9 cbf70c f1d575 994fad 611f69 8d27c2 
+##      1      1      0      2      2      1      0      0      0      0      0 
+## 9368c1 e81e72 8b643c 56c3f9 fe852a 165731 927fb0 ec10ca f23f4e 457e24 68bd03 
+##      0      0      1      1      0      0      1      1      0      0      2 
+## 2512d7 e13eb6 567255 db5332 4b0f10 1411c3 04415a 3b0141 c06dc9 e1d798 09f73e 
+##      0      0      0      0      0      0      1      1      0      0      0 
+## 4704e2 7b6887 95c85f fc0d62 5bc984 a0bc11 8a79c5 e5998f 44163c 29734b b6f403 
+##      0      0      0      0      1      0      0      2      0      1      0 
+## 18f4ae aeace5 60ba96 97ea41 984166 e904cc 8adef0 135160 107cb9 b72eed 128d10 
+##      0      0      1      0      0      1      0      0      0      2      0 
+## 349ae7 5c033b 9e9114 28e4d3 5e95bb 23a93d 2ccd21 06da4f 846579 765861 1ae61f 
+##      0      3      2      1      0      3      0      0      0      0      0 
+## e0424f 08a632 7aa231 435e4f b1b252 68f609 816793 64ef8d 36391a 21e293 785e65 
+##      1      0      0      0      0      0      0      0      2      0      0 
+## 7e4b50 edcb9c c41a43 a9718b 8d8972 d34c05 64b20d d9fc12 152e9d 70e542 2336b5 
+##      0      2      0      1      0      3      0      0      1      1      0 
+## 4d3855 0197b6 671f40 95a292 faf2aa ebe990 336bf0 4a985e ea5c01 1fd12e 78409a 
+##      0      0      0      0      0      0      1      0      0      0      0 
+## 76cf53 a23bee 050888 fbb2a1 cee3a1 a4d0d0 a4df9d 788d03 daa60c 898eab 62b067 
+##      0      1      0      0      0      0      0      0      0      0      0 
+## 0f4976 7f8471 9ed61d 03a7ba 5d6f13 af2f4a 08c2f2 097ab6 adf13f 7df257 156d44 
+##      1      0      0      0      0      0      1      0      0      0      0 
+## dbc17e 26b551 625d9d c4a7f0 f40f7b fcf236 8d58c4 752c63 a1365c fdfabb d7ff31 
+##      0      0      1      0      0      2      0      0      0      1      0 
+## 7456e4 8d3858 f07ae3 40b34f 13de32 2b8fed e25651 96217f 15de43 25b337 507608 
+##      1      0      0      1      0      0      0      2      0      0      2 
+## 056b1a 5ee95c da5cd3 93f42a b4671f 471584 5d2042 a9bd2f 13cafd b7cf2a 96d147 
+##      0      0      2      0      0      0      0      0      1      2      0 
+## d8b891 1e7b26 fb0976 bef7db e93394 dbfad8 10cb7a 73a653 c46e1a cf51e0 5fea67 
+##      0      1      0      0      0      3      1      0      0      0      0 
+## 0db116 c19ffd bd14cc 55c64b 0e2db1 578219 013ff1 8555ef 3e4063 e68dd5 078628 
+##      0      2      0      0      0      0      0      0      2      2      0 
+## 843169 0fc6eb 44088e b55ec2 ad7100 6e0ea5 b83511 4df686 fa44c8 277c20 62e1be 
+##      0      2      0      0      0      0      1      0      0      0      0 
+## acac6f 018cec 1aae82 28d55a 63de8a 5ec9b2 a248d0 ee6d2a 425730 78c705 cf7366 
+##      0      1      0      0      3      1      0      0      0      0      0 
+## e067e0 7d8ecb cd52c0 a6ed82 bdfe4b 1b85c4 51c325 0c4e4c 95b91a c6cdb2 61264e 
+##      0      0      0      0      0      0      0      0      1      2      2 
+## 656249 6326c6 d28360 7c3e28 dd44f3 21368b 017b46 a7017b bcd672 8a1530 6d36d3 
+##      1      0      0      0      0      1      0      0      0      0      0 
+## 32feca 51c203 9d0f57 305144 bb0230 f7b14d 5265ed 4cf5da 5a65bb 29dc06 9e2de0 
+##      0      0      1      0      1      0      0      2      0      1      1 
+## dc86e6 b26166 635d93 54336c 17742d 2eda0a 2b8802 3bd788 b725fc 5f6943 a1fc10 
+##      0      2      1      2      1      2      0      1      1      2      0 
+## c51e31 caa00d 01b793 cec7e2 7701c9 d24a27 7692e2 4e7001 f78a0d 53f6ed 728730 
+##      0      0      0      0      1      1      0      0      0      1      1 
+## 23206a 376051 b2794b d97771 7d727c f2438e a1b9bd 4615f4 1c7c3f e824bf 7f957c 
+##      0      0      0      0      0      1      0      2      2      0      1 
+## b8c40d 5114fe 0b33f5 26250e 919feb af4c4c 07a2bc 0dfe67 477506 5cc99a fe60e3 
+##      0      0      0      0      0      0      0      0      0      0      1 
+## 17ba91 506d04 f9c682 70e8b8 19b40a 3c006a b25795 05490c d95c49 300cf2 f8b2d0 
+##      0      0      0      0      3      0      2      1      0      0      0 
+## a8b182 8028e7 7289d1 1f09be 742005 ff2d9a 72cbb4 5d3b71 41c84b b03b29 9b07ad 
+##      0      0      0      0      0      0      2      0      0      0      0 
+## fba9ac e31dfa dd7512 fc4a3b 32c27d 6688fe 2e3254 8ff05b eff3a5 4c0be8 9ad494 
+##      0      0      0      0      0      0      0      0      0      0      0 
+## 4c6d67 89c178 c44eb9 033ccb 8cbd71 8b100a f96d1b 556661 39768c 5c27ca 1bb136 
+##      0      0      0      3      0      2      0      2      1      0      0 
+## 9a008c a3f6dd ad9edb 836f4a ff144a ee1b06 882ab5 d0314a 8b594f 8bf595 633420 
+##      0      0      2      0      0      0      0      0      0      0      0 
+## b0dd25 5c9744 7d0cf6 125c66 b6c10f e0fff0 4c0180 333173 ccf52e 56279f 19f6fb 
+##      0      0      0      2      0      0      0      2      0      0      0 
+## c55720 10ce39 db8ca7 28311a dd977e 10ddce f320d4 271218 f6fd3e dbab87 5c136c 
+##      1      0      0      0      0      0      0      2      1      1      0 
+## e4b6b4 4166d4 9359e2 28f2a4 00409c 133279 e99fd4 583f19 12a0e2 4d0722 998070 
+##      0      0      0      1      1      0      1      1      0      1      0 
+## dd910c 152abc 604a5e c4f949 7eb05e efc197 0bafac a8788d c2c8ac cb1336 9bef03 
+##      0      0      0      0      0      3      0      1      0      0      1 
+## 47243a 9f62f1 e1ec99 5715b7 26c491 c280b4 b4888f 6984fe 6f85bb d59299 dee922 
+##      0      0      1      0      0      0      0      0      1      0      0 
+## c6a679 505c6f 6d3b3f c68c31 280d54 9da8ec 6032ec 9d522f 36e19e 114361 c5dd17 
+##      0      0      1      0      0      0      0      0      0      0      0 
+## f7118d 137be7 ad0218 e9d18b aac41c 9ef91f 8164f6 27ce4e 0e654f a12b9b b5a6ee 
+##      0      0      0      0      0      0      0      0      0      0      1 
+## 166302 f73f58 292298 53a3e2 5b2cbe 42bd9e fd655e f832bd b18a1d b6de8a 51995c 
+##      1      0      0      0      0      2      2      0      0      0      0 
+## 3d9f8e d224b5 77d9e0 1e1733 94899e b792fc 3215c5 b780d6 1e55cd c70a33 635246 
+##      0      0      1      1      0      0      0      0      0      4      2 
+## 6855bf b3ec9e 653ae4 1cf7a4 c76f09 183bad e74fd9 b676e5 a074d3 783fbf 31f654 
+##      0      3      0      2      0      0      0      0      1      0      0 
+## 392896 327213 416072 25bfe6 fb2c5a a52491 49a14d 745527 68aaf2 ebe2aa 80107b 
+##      0      0      0      0      2      1      1      0      0      1      1 
+## d4d8c4 1f3f18 dc1730 e97396 43915f a003a1 439526 e185f9 8a3c52 17374f 4d563f 
+##      0      0      0      0      0      1      0      0      0      0      0 
+## 31403d 7bdda7 3593e1 43e5b0 660133 27afb4 f714ea b66d08 408c53 4814bd 2eb46a 
+##      1      0      0      0      0      0      3      0      0      1      1 
+## 81e476 54bf32 8ed116 57db21 f37052 41323d a269e3 305fcc c2a34f a5f1d1 26b565 
+##      1      0      0      0      1      0      0      1      0      0      1 
+## f309db e39b8c 9a944a 640d83 451920 dd2889 ed373a 1f4955 f17c55 0e999d 39f4e0 
+##      1      0      0      0      0      0      0      0      0      0      0 
+## 5fe731 d0ff5f 02502c 3edb41 05f8a1 a4b72c ebe4df 4e7571 e98078 4029d8 60dbf4 
+##      0      0      0      0      0      0      0      0      0      0      0 
+## 4d9850 ec465b 6cf8ac 9df611 973351 237181 f2fc3f da9565 bb2f5e a7ca2d 0211d7 
+##      2      1      0      0      0      1      0      0      0      0      0 
+## 617373 9b61c9 1f1cfd 767320 a66fa5 a93984 66c2f6 a127a7 545b3b 95e386 b6ddab 
+##      0      0      1      1      0      1      0      4      0      3      0 
+## 136ae9 e6be32 254e90 5fa181 fe8345 baf868 10153b 20a1ec 579792 7c8fe4 6c1185 
+##      1      1      0      0      1      0      1      0      2      0      0 
+## ecb1de e278e6 039299 e0a4cd a5d3bb 1a4d67 47872e f64442 b48c42 00612b acbf49 
+##      1      1      3      0      2      1      0      0      0      0      0 
+## aa2c15 45117a 717b92 471fd7 65f435 c45a92 9f9bc0 1d6ffd aa3701 aae55a 96a73e 
+##      0      0      0      0      0      2      0      0      0      0      0 
+## 2b3e98 247cc4 9487e2 e227da 544c7f 36c1f2 bab882 712001 633fbe 766add 08a3ef 
+##      0      0      2      0      0      0      0      1      0      0      0 
+## f02cb8 2a3578 8e5bba ed6805 2456a8 68abab 312518 cfdcd3 beec14 227baf 47b89e 
+##      0      0      0      0      2      0      0      0      0      0      1 
+## 33da93 c2ae34 04ebc8 441130 4e54ad a2b371 e0ac78 19374d 7ca4c0 2a25c6 318ea3 
+##      1      3      0      0      2      4      0      1      1      0      2 
+## 8905fc dcea0f 351e27 1dcf17 a44c7f 796c7c 203a9e a95dd9 9d197f fd6a50 e36e1f 
+##      0      0      0      0      0      0      0      0      0      0      0 
+## 724b24 eb51dc 6be1fc 140f9e 3724e6 21089f 6f0149 ab6e76 bbefb9 c2a1ce a2df92 
+##      0      3      0      2      0      0      0      0      0      0      1 
+## e61c07 08877f 127ae1 0e6823 ce1a9f 14b1c5 847ead 827491 ed507f aba6e2 fef2b4 
+##      2      0      0      4      3      0      0      0      0      0      0 
+## 7632dd 26d162 747ece 37e101 2adcc8 595529 bb1899 4b1a88 856abf 2b6134 4360db 
+##      1      0      0      0      0      0      0      0      1      0      0 
+## 63d63e ae7509 17e418 46bed2 987c0a be940e 4086d0 b46a7a 690c9c 1bb6bd b85356 
+##      0      0      1      1      2      0      0      2      0      0      0 
+## 9cd0c9 c3f82b e6b3fa a77514 ba66a6 47dfcd 8ba52d 2d1aa7 89de0e 76a4f9 a32a1b 
+##      0      1      0      0      0      0      0      0      0      0      1 
+## 7a1964 979ba4 ca5478 e0669c 54f524 8bf53d 7f3916 8e5f6d a6cbbc 3c498e 30b41e 
+##      0      0      1      0      0      0      0      0      1      0      0 
+## 833a20 2c3a98 c9b9ce 42b86c 7791e0 f3cc31 849de8 742243 ccc31f e26a2e 6ffce0 
+##      0      0      1      0      0      0      2      0      0      0      2 
+## 5e1c71 07df1a 8a0cb1 52d564 15b0f9 306557 5e9cf3 464ebf ac8a1d 022e0b f5bff6 
+##      0      0      1      0      0      0      3      0      2      0      0 
+## 7a7df9 969195 e8a7e7 a33434 10362e d4549a d17f34 3a4372 27ff7a 8e106e 2bf2f3 
+##      0      0      0      1      0      0      0      4      0      0      0 
+## 84c751 0a9c74 f044b4 0b5ad0 ee177b 5c796b d33dc6 474608 992ff2 d00e49 db564d 
+##      0      0      0      0      1      0      0      0      0      0      0 
+## d81314 217b74 a22ee3 616a17 f85d5d 4a9b27 fc9869 d335b4 d8ff1e a46d91 fd960a 
+##      0      0      0      0      1      0      0      2      1      0      1 
+## b934da 130e2a 82d4cb 3b925b b3860b 35ada6 b59de2 c75eac 7a590d 80a84a 5b0184 
+##      0      0      1      0      0      0      0      0      1      1      1 
+## 2d469a ab7dc1 af18c5 11939c fe2e5a edf379 764d43 d582d0 aac953 229914 7c39f5 
+##      2      0      0      0      0      0      1      0      0      2      0 
+## e466cc 71adce 2d0f27 9a1d89 998786 f8633d f03e2e 67bbe8 9d515f 7f82f3 cc9a2d 
+##      1      0      0      0      0      0      0      2      0      0      0 
+## 721b5b 546037 8ec7e8 366494 133f77 6ad9f7 808597 26615a 176b73 50fb75 96f892 
+##      1      0      0      1      0      1      0      0      0      4      0 
+## c94f47 b502c5 686293 686738 efaaed 8c8cb0 d53b99 9cd79f b5fe63 9a889e d24777 
+##      0      0      3      0      0      0      1      0      0      2      0 
+## 5224aa d5b8b2 8968ee 5721f2 deed70 b30365 75d401 72b4aa e74721 2349f6 5a7920 
+##      3      0      0      0      2      0      1      0      0      1      0 
+## c9c621 72f036 b62313 e42e33 ba2431 2d7ae3 36177d 158b05 cfbd0a b7cc75 c8aa5e 
+##      1      0      0      0      1      0      0      0      0      0      0 
+## 9c6ca0 7938aa 49ecbd df052c a1c20a a0aa88 f1292f 3b9e24 445b55 013436 c8fc59 
+##      0      0      0      0      0      0      0      0      0      0      0 
+## 6937f8 263041 5355c3 5439ab 7a094b 05c075 d07161 8d09f3 05d68d 5b6843 c17eda 
+##      0      1      0      0      0      0      1      0      1      0      1 
+## 216a1b 41fa1e 4545c9 456f0f 2f05b5 b1f49c 05067a 7cf540 33f478 a1d509 db9dc8 
+##      0      0      0      0      1      0      0      0      1      0      0 
+## b1ecb7 93dcbf ca631f 1feb95 9f59e1 e79a45 44aeda 02c5d5 71068b 63c0ce dfb336 
+##      0      0      0      0      1      1      0      0      0      0      1 
+## f4c88f df0c06 882b62 7ee824 bd033e 954a8b 6bc802 0687e1 473f30 320c06 c18e5f 
+##      0      0      0      0      0      1      0      0      1      0      0 
+## a430ad 8e65fc 1101b1 8c3a73 37262e 8f5a90 da99b7 c24c42 1f4b5e 6b7905 da5f22 
+##      0      0      1      0      0      1      0      0      0      0      1 
+## ed67c0 952a19 cb8d85 9d547c a2bd77 1759bd e58272 93dc70 5e7b87 9705b8 36db8b 
+##      0      0      1      0      2      0      0      2      0      0      0 
+## c23f01 597f17 8399fe 01dad0 9be9f0 78fbe1 d62ad7 b80e39 a14835 df37cf b326fb 
+##      0      1      0      0      0      0      0      0      0      2      0 
+## 697194 92da50 ad92f3 3ecbb1 157310 ca536f dc6f96 90c6a8 ae5459 3ac4d6 7947aa 
+##      1      0      0      0      0      0      0      3      2      1      0 
+## 01fa91 a4de87 ba4cfc c4757a 2fd954 2fc2f1 0eb978 539523 02e50e eb4d8f 8bb9f9 
+##      0      0      1      0      0      0      0      0      1      0      0 
+## 55f107 7102d0 713171 e94fa8 f211ce 5d2847 045613 dec104 7c321f 52df3e b18db1 
+##      0      0      0      1      0      0      0      2      0      1      1 
+## b3764d 74af83 fa21ad 2dd2b6 4cc78f 47b1e8 82f642 14ea75 83820f 60b308 e20978 
+##      0      1      0      0      0      1      0      0      0      0      0 
+## 8673bf ad56e4 7aeb94 b4bc41 798126 195a2f 1ab99c 38fc71 7d8aa7 e7597f 919b2c 
+##      1      0      0      0      0      0      0      4      0      0      0 
+## 159dbe 171f70 0120b9 6cc65f 7ca88d 5da423 a986fe 42c23b 6c440c a2a82c 79b312 
+##      0      0      0      1      4      0      0      0      1      1      1 
+## eac0aa 84e685 534e49 840cc4 17e34c 8aba22 4dcfb9 8f0879 471b1e 3372da fd687c 
+##      0      1      0      0      0      1      0      0      0      0      2 
+## 725dc1 8cea01 82486a c31a53 216c70 9f84d7 07d12e 25d635 96c70a 9e438b 18cb55 
+##      0      0      2      2      0      0      0      1      1      0      0 
+## fd2622 b42a17 644875 ff3154 85cdf8 b9170e db5dfa 046a62 c82220 fded07 96cf2e 
+##      0      0      0      0      0      2      0      1      0      0      0 
+## 3f4696 90dd40 b56b84 7cbe2e d5ef6e aedcdb 7980f0 92fc4e ba6491 24e5bd 3d63de 
+##      1      0      0      0      0      0      0      0      0      1      0 
+## 7ffacc cbce06 d6d8d0 090d77 1d662c 134e88 b0059b 55addb 61f671 3334d0 dbc8c4 
+##      1      0      0      0      1      2      1      2      0      0      0 
+## b71fc2 e64e04 cf870f 18e75d f719a2 f11c34 6fa161 129d17 4efd7c 13f546 ac7f4b 
+##      0      0      1      0      0      0      0      2      0      0      0 
+## 5cadcf 1fe8ce a1e166 087daf 2e312f 657880 5dc8fd dab451 3e1e8d f32857 f2a707 
+##      0      1      1      0      3      0      0      1      2      3      0 
+## 11c9f6 1793bb 8e28d2 3b0bb9 97905b c2ba41 6c6fb3 0a5f4d b4dd97 d886fc 4635f5 
+##      0      0      3      0      0      1      2      0      0      0      0 
+## c567eb 2fc88e 80b1c9 b2cd24 619e1e b6fce0 2c9c24 a8e62e 828d1d 7c0ab5 88cfe5 
+##      0      2      0      0      0      1      0      1      2      1      0 
+## 3eb7a7 766d3b c3c129 532394 40a505 b8bd29 2aedd6 8bd6ee 499dad 24cca5 8f7522 
+##      0      0      0      0      0      0      0      3      0      0      3 
+## a8be18 37789b d02a8f 9a0ec7 8fcead bd6ae2 7f1314 e7d420 4ce742 866ea2 0563d7 
+##      0      1      0      0      1      0      2      0      1      0      0 
+## 6f7211 a356d4 bc4cc3 725b35 9b32a7 9f2ac4 f39d91 f162c3 176fbe 315f4a 6e720d 
+##      0      0      0      0      0      1      0      0      0      0      0 
+## 5afc68 2d733c 928277 190f38 9c66f4 80fdfb ce203c b78719 6181c6 afdee8 dccd79 
+##      0      0      1      0      0      1      0      0      0      0      2 
+## 91ef1d 52e0b8 891cc7 1cc89a 900664 2d3467 04b083 54c4c3 10dd7d b3b0b4 a0e862 
+##      0      0      0      0      0      0      1      0      0      1      0 
+## d3113c 7c1cfb fa8459 14762d 1a0bf0 f2b27a e12b54 6bd22f 2e5369 a5680b 69d8f9 
+##      0      0      0      0      2      0      3      0      1      0      0 
+## df65a9 82b353 731b71 62e038 1003ff 6e17b9 0baf82 bdef8f d2f110 97a998 b73c71 
+##      0      0      0      0      1      0      0      0      0      1      0 
+## 2dae0d 3f47a7 f5c521 1cab0a a6075f 24717d 527871 2e523c 631102 555d5c ad6cac 
+##      0      0      0      2      0      0      0      0      0      0      0 
+## f6c560 8202a8 7ba3ff 1b1958 e8bbf8 b0fa52 d083bd aa7ad1 db3c10 c39d06 2955ba 
+##      0      0      0      3      1      0      0      1      0      0      0 
+## f6cf40 f4f203 1ee9ac 7400b3 18399b e6ea96 217fe6 2ce30f 3ca785 beb534 44e1df 
+##      2      0      1      0      0      2      0      1      0      0      0 
+## 506dfc f839c6 d64aef ea4d87 3bda93 b8b70d 4abee6 c38a20 8f461c 0d88f8 72ad8f 
+##      0      0      0      2      1      1      0      0      0      2      2 
+## 11945b ba945d 24f1d4 f2134d 141b2d 0eb65c 416c8a e42dbc c1978f dcdccb ff2492 
+##      0      1      0      0      1      0      1      0      0      0      0 
+## e8da84 bfedf6 32711a d72009 f8489a a4812b ae27e9 6bcb8a b345c5 8a06eb 749559 
+##      0      1      0      0      0      0      0      0      1      0      0 
+## b9b671 121e5b 479c75 777761 2003a1 9b2b8f 021ca8 c9eb1f e1c081 02d21b 08a5e0 
+##      0      0      0      0      1      0      0      0      0      0      0 
+## 8ab6bd 9884eb 809005 4fe96a a3c1ef 648351 db52f0 a8ff0e 6e9e82 55bf75 ae2350 
+##      3      0      0      0      0      0      0      0      1      0      2 
+## 6d1191 0406d7 433862 953e83 0ac325 0be051 731a9a 420b88 15cd11 41f5c5 aa33e2 
+##      0      1      0      0      0      3      1      1      0      0      0 
+## 90da47 d6d90f 88b898 b18cb7 e07bbf f7ea4a e08df9 1ecfd4 1034be 518a00 bb2648 
+##      0      0      1      0      0      0      0      0      0      1      1 
+## 1e017c cc5abd ffaebd eca3d5 cb45ad 608039 81fcc9 3a96bc 6a37d9 874378 842e45 
+##      3      0      0      0      0      0      0      0      1      0      0 
+## 7a5936 818a86 b3f116 4f3db1 4f4264 da8432 2e3e18 5dc1f8 a55830 18b45d f66f72 
+##      0      1      0      0      0      0      4      0      0      0      0 
+## 0b0502 5b4020 fd9d9a 0e9eb1 b48b63 bb40ed 6b53e9 7174dc 24e36a 63f7af e11d3a 
+##      0      0      0      1      0      1      0      0      0      1      0 
+## e63112 aed10b de5e37 1d5704 86408f 08596c 3d93e5 f55792 fcba89 fc08ed 922374 
+##      0      2      0      0      0      0      2      0      0      1      0 
+## 19db82 6af787 3a964f 4698f8 4e7be4 5c05a9 4a215f 254930 fe2b09 b50434 a41107 
+##      2      1      0      0      0      0      0      0      0      1      0 
+## ec45fa 85d280 a8543d 1afabf 07d67d d13aa8 aa3ce1 423f8c 46f202 cd2d3a f9870f 
+##      1      0      0      0      1      0      0      0      0      0      0 
+## 692ce9 9bb5d3 46823e 68382c 42adc5 aade2b 28c5fe de305e 4651d4 8f64df 331030 
+##      0      3      0      0      0      0      1      1      1      0      0 
+## 89aaaa 162d45 1a7027 bdb196 6e0ca9 3e0466 ebf21a 83fa8c e2d508 9c004b 883f9e 
+##      0      0      0      0      0      0      1      0      0      0      2 
+## 6c4792 63ef14 879126 ca5f7a f87828 c5d735 93e068 9e3394 ea88e4 e9eab9 9653dc 
+##      0      1      0      0      0      0      0      0      0      0      0 
+## f68db4 f16c92 ebe5ff cc7c6a 1cab44 cf7ef4 0f2991 0c6a2f d92e21 7291ba af1997 
+##      0      0      0      0      0      0      0      0      0      3      0 
+## fa8529 dfcfa3 561cdc 99e1a5 98bf9a 075855 0ae2de 9d8358 43fb82 56cca2 b37ed0 
+##      0      1      0      0      0      0      0      0      0      0      1 
+## 10cae2 63be3a c41075 cf1cd3 b613da ece4f9 7be7b6 e59fa0 d9e5bf 47aa13 1b6f79 
+##      1      0      1      0      1      0      1      0      0      0      2 
+## 795410 c0967d d44890 f088b8 93be1b 55a837 65ed43 da5d58 f8cd8f e283cb 318295 
+##      0      0      0      0      0      2      0      0      0      0      0 
+## 064b7f 25b4c2 385989 1abc82 c7ac66 3f4174 f39dc9 9ec3b0 8f654c 5dd63e 4e5c39 
+##      0      0      0      0      0      1      0      0      0      0      0 
+## 212d29 3ac023 38893c d3ad1c a8921f 0a9204 573518 3bad74 2759d7 b19f24 4c68e7 
+##      2      0      0      0      1      3      3      0      0      0      0 
+## f819b1 e42e11 482948 fac12f 44c7b1 2c8423 cafb6d 18ee39 711357 300a9f 175f02 
+##      1      2      0      0      1      3      1      1      0      0      0 
+## 686dd5 ed9bcb 35b238 a87fe4 a96c30 e06c58 e962d2 7e3883 82d96e b17606 888907 
+##      0      0      2      2      0      0      0      0      0      0      1 
+## 5a31a5 ca2688 cb38a4 d01454 a35667 da5e7b 6ef35b 5cf6ac 702fa9 172614 14dcc9 
+##      1      0      0      0      1      0      0      0      0      0      2 
+## 904f64 e48c67 de2f3f 4231b0 61f3ae b24dc8 722b68 503cad ebfc5f e5cce5 04f823 
+##      0      0      2      0      1      0      2      0      0      0      0 
+## e9c263 1f7a60 cf357f 6a9f62 d60bc8 87713c 76b7b3 eb9fd2 626a3c 99d5b7 36d4b5 
+##      0      0      2      0      0      0      1      1      0      0      0 
+## c1d878 6056ba 5dcccf e7eee2 ce86cc 987c1f a747f4 7180ae 169ce2 0a2d01 75da44 
+##      0      0      1      0      1      0      0      1      0      1      0 
+## 6ba40d 240dd1 6877f8 80fd79 9a2286 b63de1 bc2924 156665 e78ac6 df931f 771728 
+##      0      0      1      0      0      0      0      2      0      2      1 
+## 7bb784 1cd849 e75433 e3f352 5f9f51 683d70 e80000 08b152 a9695f 08da45 008ea7 
+##      2      0      0      0      0      0      0      2      0      1      0 
+## 6f38aa 0bd59d b1430b c7544d f8d6c3 488610 598c17 7cb7a0 9dd2be 50da3a 7bc2e6 
+##      0      0      0      0      0      0      0      0      0      0      1 
+## e642c5 1b46f4 668458 2b8990 1df3c0 b5e2ec 136869 35e767 96c2fe fc8149 c5c04b 
+##      0      0      0      0      1      0      0      0      0      3      0 
+## 163567 3dc582 b54b56 095c49 0dd0a1 9ff9e3 576dfd 0153e9 dd658a e38b62 88fc0a 
+##      0      0      1      1      3      1      0      1      1      3      0 
+## f9fed8 446c5c 9ad9f1 5f3457 07c4ad 98c40c 1901ec fccbd3 a4abee dd9011 2eb14c 
+##      0      0      0      0      4      0      0      1      0      0      1 
+## 3a36b5 17948b 5b6cdd b69767 b9a31a edf907 278880 6baf4d 1329a6 ad57b6 0b9f56 
+##      0      0      1      0      0      2      0      1      0      1      1 
+## a93d55 37812a b70d1f 1ed136 e666e2 d282b9 74e599 1fa5a7 6e0760 16b50d 684fd1 
+##      0      0      0      0      2      0      0      0      0      0      2 
+## 94b6ac 8a839c f036b1 770761 69c029 f1b281 c0aeb4 0762c8 8bce15 77c5fc 1c2447 
+##      0      0      0      0      1      0      0      0      0      0      1 
+## c2a904 c3ad0d db9a83 740dcc 6bc3c5 915acd 3a314f a61e66 30bda7 960948 526e8d 
+##      0      0      3      0      0      0      1      0      0      0      2 
+## 689cc9 c80572 2d5aac 443ded a7634a 5aec1f aac55e 318954 2a61fd ba831c 381ae1 
+##      0      4      0      0      0      0      0      0      0      0      2 
+## 9b3ec6 a98246 7c4fcd 655168 6a18e6 c6dcd9 b16658 ced83e baae42 febd83 e4eaea 
+##      0      0      0      4      1      0      0      0      0      0      0 
+## 9fa7a2 ea61f3 7ffe9c 0aa2e0 1e1ede 1206a2 745cd8 d5674d 648cd7 8be43a 1a3bfb 
+##      0      0      0      1      1      0      2      1      0      2      0 
+## 2772c3 18e7fd 801e50 e73be6 519263 eb8407 225256 3b535e 6cba0e 160b12 454412 
+##      1      1      0      0      1      0      0      0      0      0      0 
+## e55ec4 a748cf 5c3d96 9c03ca 59eb95 e5a442 a38790 a0de7d 8ec975 e8a0b1 04a0c1 
+##      1      0      0      0      2      0      1      1      0      0      1 
+## c1a31a bac97a 8c4e8a d5f42d a64efd 925df2 cc4561 598273 ed026b 33560f af48f4 
+##      0      0      0      1      0      0      0      0      0      0      0 
+## c1a277 78f6dc 98e870 3a768b 2aa439 b14e09 504fa3 cc30ed 15c9d3 a24a8f 8afe86 
+##      0      0      0      1      0      0      0      0      0      0      0 
+## 0a9bbf a0ba37 d43117 813746 88c284 8e18bc 20266c 8247ba 2625a3 920567 5b025e 
+##      2      0      0      1      0      0      1      0      0      0      0 
+## 050eca 907407 1fb87a b055e9 164b90 430f99 c4aaea aa2db5 54044b 742b0f 7aee5b 
+##      0      0      0      1      0      0      0      0      0      0      0 
+## 740c90 bd4da8 efbc41 df9f64 f9b5f2 ec609f 339787 c0f295 b5faa3 f04116 bc511d 
+##      0      1      1      0      0      0      0      0      0      0      0 
+## 2b9281 e8a583 7a7009 10ff1e f3b360 c94546 a78b22 5a5e62 fc6667 4c8369 fbfcd2 
+##      0      0      0      0      0      0      0      0      0      1      0 
+## 01b12d a8b41b d3a411 e83194 65d865 48da09 6ee1a9 afc484 95556b d580d6 cbfe3d 
+##      0      3      0      0      3      0      0      0      0      0      0 
+## 1a454f b65355 6198a5 12d0c8 fc4476 f76807 d9cc15 6ed3df 7f9a91 25fb41 18f1c9 
+##      0      0      0      2      0      0      0      0      2      0      0 
+## 679c45 35b23e a507a8 60813f 8a3edc d304e0 2d7305 8f534a 170c8d 259c1d 457f57 
+##      0      1      0      0      1      0      0      1      2      0      0 
+## 7f0470 ff5ad5 0d4a75 6e90d7 544e2c de70d2 c2f748 14f503 363851 bf61a2 46fc55 
+##      0      2      0      0      0      0      0      0      2      0      0 
+## 420004 35973a 4faaa7 b9f71a cb8f4e 3d623f 237167 08f742 b07435 1eea27 754974 
+##      1      1      0      0      0      0      0      0      0      0      3 
+## 1bf83a a4b625 0c4516 9ba7a6 3e714e 3094ce 6f8a3e 6c9e8a cfb521 aac49d 8e43e6 
+##      1      0      0      0      0      0      3      0      4      0      0 
+## 00b995 fb53be 0ba3ab 79bfc6 97983e 5ecf10 7f82ff 72ae47 02bb6c 192e36 9e0ce3 
+##      0      0      0      0      0      0      1      0      0      0      1 
+## 577af1 21c3e6 9caee0 dd1867 e8d39b ef8aca 7e1591 b832c7 34713b c70ead 62f4f2 
+##      1      0      0      0      0      0      0      0      1      0      0 
+## 8041e1 49434d 23bb04 7316ea 57f450 f804fd 1b4eef 927c95 f5e960 d3ea55 e41469 
+##      0      0      0      0      0      1      0      0      0      0      0 
+## f29588 31a7f9 e6b106 771638 f5b68a 7120cc a348f6 dfaaf5 8fde72 c262cc 7344ee 
+##      0      0      1      0      0      0      0      0      2      0      0 
+## 86340d 989688 ffd122 7c5c70 bff648 37215e 107553 af82b2 c8226a df9d8c c65dd0 
+##      0      0      0      0      0      2      0      0      2      0      0 
+## 6dc6f7 676b4f dde835 d7854c dbebbe f0b694 337146 d8d18a 0cdcfd 80ba17 6bde04 
+##      0      0      1      0      0      0      1      0      1      0      0 
+## 44255d eb5aeb 07202f 3827a0 a0c9e8 8e965b f64754 87a9aa 4e25eb b8210c 15024d 
+##      1      2      0      0      0      1      0      1      0      0      0 
+## ae3ac3 e018ae 0bdf6b 69647e 8a4b27 70c0e6 550664 3cc3c2 b1ccbe bc505d c182ce 
+##      0      0      0      3      1      0      0      0      0      0      0 
+## c228f0 551aef 01d4b5 88ed04 8979e3 3d7f21 e05f33 973c48 ca492f 1d5f62 f0332e 
+##      0      0      2      0      0      0      1      0      0      0      0 
+## ed1336 058f21 7719de 7a03e5 aee59c 36e205 1b4458 e09242 6314d0 af82f5 9af4dd 
+##      1      0      2      0      0      1      2      1      0      2      0 
+## dc4329 501241 e3b7b8 5ccf35 35cad9 27f706 7bb524 72268f 75d9f2 4fa236 9f0522 
+##      2      0      2      1      0      0      0      4      1      0      0 
+## bf30cc 99b6b9 2a16aa 92ce82 b3a86b 7f49f5 00e35c bf8221 a0ab0d bdbc47 e27636 
+##      0      0      0      0      1      0      0      0      0      0      0 
+## a74054 00dda0 bb5957 2725d3 a16e58 c5eb87 ffb17e 3a36da 218438 8b1382 e7a220 
+##      2      0      0      2      0      0      1      0      0      0      1 
+## 0f7acd cda569 ce926c 14a775 37aeac cfe2c7 809a72 bf9ee7 b9c86f 4e9ebd 21957a 
+##      0      0      0      0      0      0      0      0      2      0      1 
+## 623061 bbfba1 1704ad 74f674 dbc86f f19093 bd9f32 639e4b 99b140 3b3e9f d3dac6 
+##      0      0      0      0      1      0      0      0      1      0      2 
+## 2d6a6a 7923b4 0a14e6 b7b32a 1a9f61 f0766b 72d8f9 c9e829 f28e60 5b8293 0701ee 
+##      0      0      1      0      0      0      0      0      0      0      0 
+## a3e4a3 d46458 b37e78 cf7729 fa7a87 ffa8ae e99fdb 2f1ab0 442a9a 303410 bb365d 
+##      0      0      0      0      0      0      0      0      0      0      0 
+## 5da51f cc4b7f 6c94f4 570c28 3fd6e5 391f22 165763 208be8 3c0d38 b4e767 7eb202 
+##      0      0      0      0      0      0      0      0      0      0      0 
+## 59c35e ee154b f77994 d37291 db2887 08836a b1e763 9786fe 4c893e c8dad7 5d9a56 
+##      0      0      0      0      0      0      0      0      0      0      0 
+## b788f1 41611c b59345 9bd54b fa9e25 72c803 1ac5fe cb15dd 604232 97a893 cd7bff 
+##      0      0      2      1      0      0      0      0      0      0      0 
+## a9d36a 644c23 7c173f 395760 df2922 62871e bd2990 669242 d9bb43 73fa25 ee7060 
+##      0      0      0      1      0      0      0      0      0      0      1 
+## 71e717 d79279 54714a 0f73cb d013c8 85344a f1dd78 12aa43 2f8828 78b0f7 984d37 
+##      0      0      1      0      2      0      1      3      0      0      0 
+## 255cda 929bf3 fe9196 1a246c d07e11 a91862 0800f3 13dd6e 71a4fe 6cbac9 cf6456 
+##      0      0      1      0      0      0      2      0      0      0      0 
+## b76e36 0f70b1 c31706 c3a2dc 098a4b 6d6a86 66f81e ea4df1 f1cf4c 903cb3 8b6905 
+##      0      0      0      0      0      0      0      0      0      1      1 
+## 73c2f9 195985 7f9adf c48131 91bb6f 67c121 1dad57 007df5 4e8054 9a43c4 156618 
+##      0      0      2      0      0      1      1      0      0      0      1 
+## 29fb41 ac0388 9c951e a8c916 7fad1e 525a03 3679a7 b0bddb 355a4c 4e5920 ff3bb2 
+##      0      0      1      0      0      0      0      0      0      0      0 
+## 73be6b 022294 4cf607 2bac9c 40202a f19723 504fe1 c9092a 241b28 e898d4 bbd971 
+##      1      0      0      0      0      0      0      0      0      0      0 
+## 46ecc2 db4198 ddc8d4 a7a506 064f56 3e8b91 642146 2a0001 6f3609 a7fff3 1ba9f9 
+##      0      0      1      4      1      0      0      1      1      0      0 
+## 393c00 801a4b 7339c0 867038 996b5c 1ad5d8 31fbdc 63d744 102152 e4e1f7 37868d 
+##      0      0      0      0      1      0      1      3      0      0      3 
+## 2fa71e a03147 c926b1 507655 eefc49 a3a354 41c979 f0b9c1 0b316e d25ce3 9d304f 
+##      0      1      0      1      0      0      0      0      0      1      0 
+## 0c56e0 7aecc8 a75fd1 b56856 40b9c7 e27c3c 82494c f5aa94 266760 2e01d4 99358d 
+##      2      0      1      0      1      0      0      0      0      1      0 
+## f20dfd 2a2cca 483dd4 84b86e d47884 af3fea 10f43d 4b158a 2b6a9c 506fbe 1f32da 
+##      0      0      0      0      0      0      0      0      1      1      1 
+## a68dd6 1ec458 807db6 9d46f7 04c762 f3ca56 6c6bc5 b47d41 9d3590 d8f569 fadea0 
+##      0      0      0      0      0      3      1      1      0      0      1 
+## db2f5c 98c633 c08ed9 1ebd20 5ef186 694928 89006a 0474d6 32ce2a e62e62 eb9a3f 
+##      1      0      0      0      0      0      0      0      0      0      0 
+## 9432d0 b39dac 9c5424 0349c7 de3b80 980dd5 cffdea 8311d8 8f32e8 62bb46 f65e8a 
+##      0      0      0      1      0      0      0      0      0      0      0 
+## bc475c 3f7fa4 012ea3 1edcc2 21258e f99f12 055d3a 99766a 710ee1 be0b16 c1a0c6 
+##      0      0      0      0      0      0      1      0      0      0      0 
+## 8e4378 a7c306 1f8fcc d4a584 c3d74c d1c4c7 7a080f 30af4f 7da59a ea099c 916283 
+##      0      0      1      1      0      1      1      0      1      0      1 
+## ad9518 8ae775 3968f9 4f7847 6c1a00 45216b d7d495 f56065 6d7ce4 904052 18bd2a 
+##      0      0      0      1      0      1      2      0      1      0      1 
+## 0f0343 3668fc a98ae2 6ab7c9 3ea3c3 d05eaa 3740ce 60c8fd f2b659 25d45b 74a28f 
+##      1      0      2      0      0      0      0      0      2      0      0 
+## f63811 ef99f8 4420da 4f1fb5 38e146 a76671 19d151 0b6eb8 e4c638 60e50c 7cbd05 
+##      2      1      1      0      1      0      0      1      2      0      2 
+## 1b9fb6 dba4a0 e07a57 68818b f5cc52 933bd7 c18fbe de2094 d74a9e 7864f6 fc801b 
+##      0      0      2      1      1      0      0      0      0      1      0 
+## 7763dd 2dd099 06ccc1 8e6587 e1824c 891dc7 501f29 1563fe 22240f af8dac d98d4f 
+##      0      2      0      0      1      1      0      0      0      1      2 
+## 5b98ea 8d45f5 90f4d8 839c88 c322f7 f9d114 57528b 324581 a509e6 8728f5 28c791 
+##      2      0      0      0      1      0      0      0      0      0      0 
+## 55f632 808669 7ee0e4 571af3 c8ee00 ce1486 824ad1 4ce2c5 2556b1 b2e9e2 39f3ee 
+##      0      0      0      0      0      0      2      0      0      1      0 
+## d62bd7 742868 50d699 3a5700 c12cfc 6254ff ec63d1 19703e bbda1c a581b1 6afa49 
+##      0      0      0      0      0      0      0      0      1      3      0 
+## 36b4be 5f57a9 cdbced 4601f5 0fbbeb e07f84 3ebb3e 3d3a57 30706a 3a2317 dd0341 
+##      0      0      1      0      0      0      1      1      1      0      0 
+## 72d62c 5966f0 c8a9f2 ceaf63 7050c6 71db1e 793fb2 35f38e 02133b 5024af d42571 
+##      0      0      1      0      0      1      0      0      0      0      0 
+## 1051cc 386c3e 88f24c b491d8 a7cc25 e0beeb c1f4d9 71eb44 7daf91 9ebba6 5e585d 
+##      1      0      0      0      0      0      0      0      1      0      0 
+## 716174 63b8fd da8bdb 5a25ce c7b288 4179f8 7d96c6 e4126f 863884 dab61c ce6cb9 
+##      0      1      0      0      0      0      0      0      0      1      0 
+## c26f56 6909c3 e50de4 202fb7 34667e 186147 e09a19 fa9559 2b49ad 0920ac 8b1137 
+##      0      0      0      0      0      2      0      0      0      0      0 
+## c230ae 082cb7 74b49b c1a4a6 694b24 75f913 41f6db 5fca1a dbcfe8 c57c4a e9280a 
+##      1      1      0      0      0      0      0      0      0      0      0 
+## 8c3dd9 650236 00c3c7 9b57c1 e88337 da5dc9 3ac06a 9050d3 9e9494 864934 82901a 
+##      0      0      0      0      0      2      0      2      0      0      0 
+## e77d64 d71a6e b61156 f60a47 89d82c 73647d d71709 8f7caa e83df3 da76ad 5167ee 
+##      0      0      0      0      0      0      1      0      1      0      0 
+## dc3af5 e7aef6 b6e1ee d69ca8 d25f17 2f0daf 0d386e f52668 d71777 652088 4d1c91 
+##      0      0      0      1      0      0      1      1      0      0      2 
+## e8ce10 371067 8a3ec0 f87f89 6f8014 33aa54 49d337 0c59eb 4ed620 5b62bc 8ae111 
+##      0      0      1      0      0      0      0      0      0      0      0 
+## aa65c0 31624f 00fe56 b680a2 00da2b 84e6b7 c17746 d6c884 983f4f e453f5 b65499 
+##      0      1      0      1      0      0      0      0      1      1      1 
+## f1b120 6f2ebd af78c8 c322fc c8b4d8 70efbf 269b5a 180823 5aaa02 ff59ce 74a9e5 
+##      0      0      0      0      0      0      0      0      0      0      1 
+## 2bde12 da6eda 597a72 7de326 2dea67 067c16 751999 944303 853362 4662eb 178b04 
+##      0      0      0      0      0      0      0      1      1      1      0 
+## 6ebfe0 69685d e29342 f6cc13 f92857 b2c53b 10d90d 0af57c 4a89d8 cfeed3 476f70 
+##      0      0      0      0      0      0      0      1      2      0      1 
+## c51ef1 f543f0 8ddf66 09f77f ef9e7d b82030 31b16e ceee63 b80d85 54497f cde85f 
+##      1      1      0      0      1      0      0      0      0      1      0 
+## 3d2c0e dac9a2 eff241 7f1412 b5d0bd db292c 5ddb5d 12bcef c32a35 edfa52 a8914a 
+##      0      0      0      0      0      0      0      0      0      1      0 
+## cb7a52 deb047 a02253 185f10 c07ba2 d7824d 39d2ee 059b73 3d7e9a e5e4e7 a81fcf 
+##      0      0      0      0      2      0      0      0      0      1      0 
+## 0947fc 2e440c 445d1c c8120b ed6a8c 5295cb 42a947 503262 635fae 77a257 942a30 
+##      1      0      1      0      1      0      1      0      0      0      0 
+## 34fd7f 1b806b 8d77e2 3eb2f8 c266ad f53779 c6b046 6cf2c0 e2035e dc7696 df37e2 
+##      2      0      0      2      0      2      1      2      1      1      2 
+## a4585b 1a4f6d 0ee7a0 cf8aac b87c07 8ec454 b12b2d fe86de ef8faa 7ff9ea 3b0741 
+##      1      1      1      0      0      0      0      0      0      0      0 
+## 33b7cc 5db343 0d3e11 5c7da1 50053e f1b6bc b8aa35 e8108c 1c1bb1 b4f713 faadaa 
+##      1      0      2      0      0      0      0      1      0      1      0 
+## afcfcb be9457 cf2ef9 8ab063 4efc1d e5f980 41f83a 119a92 0d8a0a 620662 b7dcff 
+##      0      1      0      0      0      1      0      0      1      0      1 
+## b7a231 f2091f 483a29 8b968c 0bdf7c 77fe44 f2a4f7 587136 84dcda 15b191 c41866 
+##      0      0      0      0      0      0      0      0      0      0      0 
+## 318e94 bef537 1dce38 d5cfb6 2bc6c4 ed2c8b 4e28b0 26028b fb7295 63c744 32c76c 
+##      0      0      0      0      0      0      0      0      0      0      0 
+## 53ae69 8d416e bf4188 e1a493 bb4832 b6aa9a 284b2e a47633 9be14e 3c86fe 976b66 
+##      1      1      1      0      1      0      0      0      0      1      0 
+## b12a74 c146f2 76403c 300918 f1a18a ffe8c4 d7290b 290508 aa7fdf 800b19 d79a0d 
+##      2      0      0      0      0      0      0      0      0      0      0 
+## 89efc3 46037e 95c935 52d43a 444af1 266c5d 057487 736507 0e4462 06bed2 9c59a1 
+##      0      0      2      1      0      2      0      0      2      1      0 
+## 5c8def 0cc4d6 8dcafb 1c4b18 30247e ecb046 c96623 7b7e0c 3370a7 af345c d05a15 
+##      0      1      0      0      0      0      0      0      1      0      0 
+## d0196d 64a71f 116312 72fdfe 24dbb9 08e780 d85783 7351ef 7c06a7 d86cb4 5f1f62 
+##      0      0      1      1      0      0      0      0      0      0      0 
+## ea186b 444724 d8ec2f d998d3 699d82 22bdc7 e952ff 86f191 db0521 3e5f4c 2dab2c 
+##      1      0      1      0      2      0      0      0      0      0      0 
+## afb25a 8a86b3 8eaee8 218b20 3749ca 1514fd 4a6f82 03ad36 16bc5c e81e6a 9d77bf 
+##      0      0      2      0      0      0      0      1      0      2      0 
+## 79b15c f31627 e0d026 bf124b ed37d7 902617 5ae160 170cfb 3e360a c52658 fb5b29 
+##      0      1      0      0      0      0      0      0      0      2      0 
+## 8549e2 e83de5 789fa5 88930e 0917a0 7a7106 24195f dd6251 1ca6ca d30117 b06109 
+##      0      0      0      0      0      0      1      0      0      0      0 
+## ba4442 2c4127 90f9f0 1afb0f dafc33 c27ac9 661626 3a77bc b5d63f 34711d 8daacb 
+##      0      0      0      0      0      1      0      0      1      0      0 
+## d736a3 fee66b 5299fb 8667e4 291648 c7d42e 22f47e 637f72 c1ac9f faf0b1 5fbfbf 
+##      0      0      0      0      0      0      0      0      0      0      0 
+## 536e69 6425b5 f92947 1e4d59 149dab 305c03 ff5e78 db103b 1557b7 ebee1f bdb56d 
+##      0      1      0      0      0      0      0      0      0      0      0 
+## 7e3598 4be7f2 05b153 204e59 404b92 8bbc6d 1f9217 7c9fba 2f2dd1 7b45ca 502df7 
+##      0      3      0      0      0      0      0      2      0      0      0 
+## 0aea0e 06440d a37dc0 f33fdc ecaec7 4d914c ee922c ca5e72 134993 836d58 27cc4f 
+##      0      0      0      0      1      0      0      0      0      0      0 
+## f093ea 61f3ac 034846 b02a58 23986e c69c94 232b77 35eeb6 d02ef4 62773f baa7fe 
+##      5      0      0      0      1      0      0      0      0      0      0 
+## 334b0d f2f2ca 155671 d8c213 79b1c5 576c96 6f5d1b 2d43cd c333a6 740875 14398d 
+##      0      0      0      0      0      0      1      1      3      1      0 
+## f14694 29329a cf1768 dc736d d5e973 9c8f19 694522 42d43a c20c11 d6ae64 a4d952 
+##      0      0      1      0      0      0      1      0      0      0      0 
+## 213e93 2fb02d 2230ca d29a58 bf9b9a ca7187 5a0442 5fcd83 ccae08 29a4fe 286f10 
+##      0      1      0      2      0      1      0      0      0      0      1 
+## 1bef19 601ec1 804372 f18538 c20282 b7b47d d6628d b3deb4 3b8b59 4102f2 1ede6e 
+##      0      1      0      0      0      0      1      0      0      0      0 
+## 855a06 a784f5 58b05a e1c629 2abd63 c48808 39c58f b0cac9 22e3fe 4f859f 9ab962 
+##      0      1      0      0      1      0      0      0      0      0      0 
+## 9db256 e73823 2d2ad8 c85ae3 8a8251 08d719 6cfedd 34aca4 6c258f 099c13 23bba7 
+##      2      0      1      0      0      0      0      1      0      1      1 
+## 63c094 e3df23 4e16e9 571665 24c64b 99be2e e56835 efe556 5c72dd cf15df 42e6fd 
+##      0      2      1      0      0      1      0      1      0      0      0 
+## 1ba59f a81176 fca629 43fe99 7028a8 9daec5 bca24d 360a75 c0c3f9 6b490d 81eaae 
+##      0      0      2      1      0      0      3      1      1      0      0 
+## 7477c5 2e3c7a d47204 3fad0c a5012e df6123 61c8e3 df3399 b091b5 f3dabd f87908 
+##      0      0      0      1      0      0      0      0      0      0      1 
+## 7c992e 5e5fd0 e975ce 9c9afb a188cd c9d8a3 3f4e2c f457ea 9fb0bc f30bb7 f856c9 
+##      0      0      2      0      0      0      0      0      0      0      0 
+## 21722b 9f1a43 813af0 aa6a7a 45e07f 273ebf eb0720 451df8 e95866 d4853d a8bae7 
+##      1      0      0      0      1      0      1      0      0      0      0 
+## e21920 824b21 fa0689 2ed407 5fbeea 7933b4 55ba20 b4cf42 b38a3c fafe2a 07a9d7 
+##      0      1      0      1      0      1      0      0      0      0      0 
+## fc8e30 3846ba 22ba3a 7a626c e39962 efba01 89e800 6e0a73 67cb00 8b225b dc0202 
+##      0      0      0      0      0      0      0      0      0      1      0 
+## c998e0 72ceda 98ff6b d20eeb 28d9fa bd95ac 6232eb d3a813 5cf13b da4d2c 498d22 
+##      0      0      0      0      0      0      0      0      2      0      0 
+## 9aa9f2 d363ac a6ae8e ef346b a9a376 66a19b 6a2c0c 38c933 dacbc6 2ef602 1ffb51 
+##      0      0      0      0      1      0      2      0      0      0      1 
+## bfa806 d0935a cddf12 185ac2 7cfdb0 092a68 bb32b5 b4c917 b2645b f5bc7b 03908f 
+##      0      0      0      0      1      1      0      0      1      1      0 
+## 3a6cfd f20095 3e32bb 307db6 738d00 5b1ded 201cea 1c8934 f21b61 13161d 8cdbaf 
+##      0      0      0      0      0      0      0      0      2      0      0 
+## 364186 08d2e4 a96703 0dfa70 cc2a1b 5495b2 03a7c4 814186 f587f9 028e18 d1f6d6 
+##      3      1      1      0      0      0      0      0      0      1      0 
+## 5f366f 8ef882 0a7fdc 4e7da8 a5ed2a 0b6dd9 cd425b e913df 984db4 877f18 f862b5 
+##      2      0      0      0      1      0      0      0      1      0      0 
+## 3a347c 709eb5 c22886 f6a5a3 f77c27 4415ef cf8c4b 09ed19 6bec10 c70a36 8da8dd 
+##      0      1      0      2      0      1      0      0      0      0      1 
+## 7dc183 93e764 b35511 f59aea 138b00 542c65 75a2d8 fcf892 8e672f 7dfdc3 f5910d 
+##      0      0      1      0      0      0      1      0      2      1      0 
+## 29a821 822ab9 9bb96e 7c2c63 4986a4 410308 9b15b6 d4d2ee 8fb471 ca3045 d9f981 
+##      0      2      0      0      0      0      0      0      1      0      0 
+## be925b 7d98be 5f9a46 9d0125 dab3e4 88019e 55d08c 41def8 eb0258 4f1274 91e900 
+##      0      0      1      0      0      0      1      0      0      0      0 
+## 78703f 376cb7 cb24a0 a818f3 410db8 9a37b0 e3a5f4 417395 d5aa1e 40f55d 55a332 
+##      0      0      1      0      0      0      0      1      1      0      0 
+## f3172a 0e032d c33f09 5cc9fe e56bd5 6db85f fdc2f3 a28cf0 c3c7f8 11d41f 49d9e9 
+##      0      0      0      0      1      0      0      0      1      0      0 
+## 910d80 3fb7ff 5600b6 e4eb71 c5ab0c c268bd 67a995 667306 fe1c26 ab9826 5ff856 
+##      0      0      0      1      1      0      0      0      0      0      0 
+## 47b031 58982e 6e30bf d4ca3a 6cef2b fa2e97 a9fb04 f07864 6dd218 169a87 129637 
+##      0      2      0      0      0      1      0      0      0      0      1 
+## 78a343 bd9224 b3975a f023fd 54894e 34bb5b b001a1 30ccf6 75f61e e59e91 83787e 
+##      1      0      0      0      0      0      0      1      0      1      0 
+## d220a1 acf0b1 584f90 811fb2 893101 2cb848 f81d7a 1b3f3b 3d282d 85fdc7 e26cc4 
+##      0      1      0      0      0      0      1      0      0      0      0 
+## f520b3 5d14cf c9a2c8 837b15 28aaaf ddd5d5 98e9a5 b97c05 14b6c3 e0c057 6a98de 
+##      1      0      1      1      0      0      1      0      0      0      0 
+## e7c9b0 01d241 d01309 c4954b 75e99b 2be397 f1015d 2ca1a1 97abc7 9cfce3 0a5a50 
+##      2      0      0      0      1      0      1      0      0      0      0 
+## 1da54a 2fb179 3cca0c f3e81a c593b8 813666 0d3aaa 5cb908 a12310 f4954c 1a5984 
+##      0      0      0      0      2      0      0      0      0      2      0 
+## b22b9f bb99b5 f5747f d81435 bf2630 79755d 6574f5 4941d4 9f8894 91c9d5 c0f45e 
+##      0      2      1      0      0      0      0      0      1      1      0 
+## cef98c 9913a3 20403b 3177f8 7a0bbe 544995 acdce5 03449a 966a09 9e70cc 706ccf 
+##      0      0      0      0      0      0      1      0      1      3      0 
+## e983d0 d794cf cf66b5 36b175 fd57a9 67c1d1 4a29c5 ac416a 42072f 792a9d ccc67b 
+##      0      0      0      0      0      1      1      2      0      0      0 
+## aed499 d7ecb8 b11809 6422a2 33aaba 9a524a 6469ac db3515 af94bc 0e8a61 eaba47 
+##      0      0      0      0      1      1      0      0      0      0      0 
+## 7bf9e9 774e90 02b80b 2a438e 449fc8 b0ea66 815a1f 4c510b 22fa1b 31225f 875c20 
+##      1      0      0      0      0      1      0      0      0      0      0 
+## b7cd3f d09b0b 9c3676 be2797 934830 cefc19 935f13 994b0d b69c7c 7fa4a3 3a7614 
+##      0      0      0      0      0      0      0      1      0      0      0 
+## 5a2c39 633171 2d3a3f 6517c9 06a734 633a6e c99419 abceb7 743129 3ecc7d 4074e8 
+##      0      0      2      0      0      0      0      0      0      0      0 
+## fb49ca 3ac609 9017fd 053846 b0f129 8be0d1 fc387e e22e2b c4aefb 746883 3cc639 
+##      0      0      0      0      1      0      1      1      0      1      0 
+## 48e87e 1f4970 ff37c3 d5c6f8 15da24 6deefb 27a547 e8c2f6 3eca68 29a2b8 a4c738 
+##      0      0      0      1      0      0      1      0      0      0      0 
+## 194db3 135bec 2fa04a ac574f fc2482 93f8bb 23f4a4 64ace5 511953 0be743 31d199 
+##      0      0      0      1      0      0      2      0      5      0      2 
+## ccaff9 f6c282 56bbfd aac9b3 1f854a 24eb61 fd7cbe 84b603 16e9eb 282cf3 c8a598 
+##      3      0      1      0      0      0      0      0      0      0      1 
+## a751b6 420582 4ec8b9 b39e78 01e000 a5b683 43979e 97d5cf d64a1d 31b15d 0631c9 
+##      0      0      2      0      0      1      1      0      0      0      0 
+## 7b1f2b 22439d a11a97 a91f59 de3026 0c9f13 cc84f6 02d91d 054a82 786126 ca31dc 
+##      0      0      0      1      0      0      0      1      0      0      2 
+## b83aa4 be4bd6 9e6e85 f12773 26130e 63a410 f0ef4f 2f9320 11c217 1631ed 669316 
+##      1      0      0      0      0      1      1      0      0      1      0 
+## 8c919d 5aed53 5d2b28 7b3ac8 fd1d11 d225be 4286f4 1101ae e07495 02ee72 30b607 
+##      0      1      0      0      0      0      0      0      0      1      0 
+## 755e43 03afc1 4b03da 0625f2 f22467 d1497e cb91e7 0095b0 445b9d 772ccf 3e1830 
+##      0      0      1      0      0      0      0      0      1      0      2 
+## 2e40ff 2aef65 399954 5fd613 5ed881 1024e3 831fbf eb460a 931bcb c7348c c5dd13 
+##      0      0      1      0      1      0      0      0      3      0      0 
+## 33fa7e a929fd 9c0dc3 1e34f2 4d4f6b fa5b1c 5d0389 bda467 a431eb 9111a4 95d454 
+##      0      1      0      1      0      0      0      0      0      0      4 
+## ae97e8 aa4584 f740cb 092cd0 92ef17 ee79fb 14d84c 465c66 4ffd8a 61ba17 123be5 
+##      0      0      0      0      0      0      1      0      0      2      0 
+## 5a05e2 31f757 75f09c 26d2a7 35323d a75c4b 11f0a0 8e878e 4506ad 190647 bc6562 
+##      0      2      0      0      0      0      0      0      0      1      0 
+## dec59b c82c6c b6956d a6667a e6ddb0 614c9e 7a4e7e 959a4d 707e10 52ae99 ba1bc1 
+##      0      1      0      0      1      0      1      0      0      1      0 
+## 945878 6c1a37 beb67f 2aa344 1ae9d3 362338 cf65e1 b3a5a8 a8742f 2c368b ffcf2b 
+##      0      0      3      0      0      0      2      0      1      0      1 
+## e798c4 6bd49d ba5d9e 36f617 6aaae6 32e296 a8a0c7 d2b34f 5d1d95 86b28f b9923b 
+##      2      0      0      0      0      0      0      0      1      1      0 
+## fbf75d 91ca67 8bafed d647e1 ee9d55 efccf6 80ef5b 424758 6102bd 61f4bb 7e41ee 
+##      0      0      0      0      0      0      0      1      0      0      0 
+## 9f157b 7b22fa b5f8da 288dc4 5315f9 03097a ced958 0f6629 567c3a b031a5 2868a7 
+##      0      0      0      0      0      0      2      1      0      0      0 
+## cb6862 21c5c7 4bad76 1c70a3 db1f72 fefb15 1ed966 fdd23c 713b6f 4d509f f04442 
+##      0      1      1      0      0      0      0      0      0      1      1 
+## e66a5b be41fc d242b8 13ac74 e62aee 063476 3971cd 176c0a b74b2c f93840 229ccd 
+##      0      0      1      1      0      0      0      0      0      2      0 
+## d1fba1 c9a4a4 9b3dea 3e822b 7ead98 b3dc29 d1749b c29476 39f2c8 c2384c 4c6964 
+##      0      0      0      0      1      0      2      0      0      0      0 
+## f498c6 e3ba2c 5c369b 72fbc1 10e2d2 720700 368bd0 070cdb 0a54ec c79172 018a41 
+##      1      0      0      0      0      0      1      0      1      0      0 
+## f78697 736d44 33e53b ce1823 48dbf5 8ab204 6e8df3 b5fdeb b21b3e 86e6ec de0f2d 
+##      0      1      0      0      0      0      0      1      0      0      0 
+## e9cb32 ecf37d 4dd6ba c49435 065d05 f058b3 7485f2 916b5f fa49c3 ffae72 419ab1 
+##      0      1      1      0      1      0      0      0      2      0      0 
+## 13c5f2 f67350 56c9fc 2adefe 95cfe5 aae7de f24600 3a1038 b73559 0b32d8 cd84c3 
+##      1      1      0      0      0      1      1      1      0      1      0 
+## 725286 5c5407 438fdf 0d8448 0c34da 5c1d27 6e3138 05865b fcdd60 5efc6c 5e1765 
+##      3      0      2      0      0      0      0      3      0      0      0 
+## 8f625e f0297e ff211d 391f09 e0fc0f 89e1aa 24f7fd 72f732 7253cd fb77bf ec0a4c 
+##      1      2      0      0      0      0      0      0      0      0      0 
+## f4c548 3e6e2d 82102a ea2e70 e08590 e1b1fd 436581 f71d07 ca24ef 644ba9 128e35 
+##      0      0      0      0      0      0      0      1      0      0      2 
+## ec8d4d ed227c 3e8ea0 2ec920 e6ccd6 500d0e ce3b46 b4ee6c 150962 af3507 caa35a 
+##      0      2      0      0      0      0      0      0      0      0      0 
+## 04a78f 371a74 30fbd8 455bfc 8883b0 c18762 4530fb 225ab8 5c6b71 239a34 477869 
+##      2      0      0      0      3      0      2      0      1      0      0 
+## 40039e 42d6ea 83f0cf 880ddb 2ca9ef 741fb1 5a30df 2ba4c0 8a2f1d fdf9d3 317a09 
+##      0      0      1      0      2      1      0      0      0      2      1 
+## d8d090 cfd445 f4b0e9 50915e 499a56 515c01 6ada81 94234b 6f65a3 63e69c bee81b 
+##      0      0      0      0      0      0      0      0      0      0      1 
+## bcaa94 7def47 1c09e2 ab4313 542d7d 3d9d40 f3441c e972f8 febc40 e9f509 dcecc6 
+##      0      0      1      0      0      0      0      0      3      0      1 
+## 956213 2f0e48 8c1f48 2baac8 52e642 29c3a0 b7de4f 55067b 58351c 9710eb dc8ed8 
+##      0      0      0      0      0      1      0      1      0      0      0 
+## a51b37 0fb819 c0a732 a3ea15 502ec1 8e84a9 9c3a56 76a224 baeb99 d216df 9c81f7 
+##      2      0      0      3      0      0      0      0      0      0      1 
+## 4e70b9 2a9e39 ab2111 d13224 378526 b69f2f 3dec24 eb8b71 5feec4 031d46 3eb28f 
+##      0      1      0      0      0      0      0      0      0      0      0 
+## a2ffdf 068e38 6235ed 6b740b a01bba b8cc83 3895b0 c69921 793fcf cfd8c7 d8ab7a 
+##      0      0      1      0      0      0      0      2      0      1      0 
+## f1e813 413bec ac5760 39c2d9 fe06bc db9404 aafd50 b66e0d 6351a7 054225 5801ca 
+##      2      0      0      0      0      0      0      0      0      1      0 
+## 0d1e5f 556fc4 98b277 5eb78d ebdead 5481ec 7b55a4 c49630 58b28a fd46be 63109b 
+##      1      1      0      0      1      0      0      0      0      3      1 
+## 4f0791 d69791 8b4794 a696dc a9cf5a dce319 5fab80 7bc4d0 43312d cc1e41 7a6d1d 
+##      1      0      0      0      0      1      0      0      0      0      0 
+## ac2903 048ebc b8fe46 076202 05467b 3d94b1 acb2d4 acdb39 ca3e99 9cc2da 1439f9 
+##      0      0      0      0      0      0      0      0      0      1      0 
+## 08465d 621e1f 8ab51b dfac24 4b1546 b1615d c9adf6 7d0b9a 9fec19 cbdc24 18590d 
+##      0      0      0      0      0      0      1      0      0      0      0 
+## 6bba7d 5db78c c21701 194b20 6b7c62 4a6075 c1aa0f 2523bc 2eb1c8 ba0a1c cb415b 
+##      0      0      0      0      2      0      0      0      0      3      0 
+## 8e21c8 b4b2f8 0e7d4e 506bd7 786ac0 72e7f4 c0b5f1 4410a7 c31079 34df64 9453ed 
+##      0      0      1      0      0      0      0      0      0      0      0 
+## 979968 42f906 bb9851 e78bf6 de1b7e e5049f 391c7c 541d47 844a7b d7c738 d17dee 
+##      0      0      0      0      1      0      0      0      0      1      0 
+## 421844 2ab9eb 56923f 954007 4fe1ff c82260 991b39 931264 ffeff2 bbc70d f3ff0d 
+##      0      1      2      0      0      1      0      0      0      0      0 
+## 071ee1 cd699c 6f8581 8a335c cfd58c bcdc5c f965ee be914f 81cc9b f048a1 21ddf4 
+##      0      1      0      1      0      2      0      1      0      0      0 
+## 409f64 9b4757 0039db 628aab bb6bfb e10537 35d712 4f3e96 013644 a044d9 da57be 
+##      0      0      2      0      0      0      1      0      0      0      0 
+## a0d32f d86510 d311dd fc4286 9bc59e 245281 efa253 4d5950 5e18a9 26c788 c80810 
+##      0      0      0      1      0      0      0      0      0      0      0 
+## 478c64 aa3d7e abd713 577734 c3e4c1 4cefed 7c8acb 0cef5c 77c0d0 379349 c68790 
+##      0      1      0      0      0      2      0      0      0      0      0 
+## b4b458 342054 cafbb0 db2b99 36a376 4d5c6b 004298 6751e8 eddd6f 599f49 9f7775 
+##      1      0      0      0      0      0      0      0      0      0      0 
+## 892abe 946267 a6b63d 675cb4 d8b0ae 6bdef0 45ac21 b0a018 060017 a68682 15cf92 
+##      0      0      0      1      1      1      0      2      0      0      0 
+## fb0c35 65ea49 1999d1 87fca9 95037f 86f641 b7f508 577f9a 54e22b 86257d 3a831d 
+##      0      0      0      1      0      0      0      0      0      0      0 
+## 7d27f8 91fb42 c98936 722b87 89983e 74d39e ac34ff 079fc9 610c15 81db03 91f539 
+##      0      0      1      1      0      0      1      0      0      0      0 
+## 970084 a833cc 3de966 090661 4878f3 cabf28 0606ac fc3077 87e28c 27a56a 8911bd 
+##      0      0      1      0      0      0      0      0      0      0      0 
+## da69ae 18f5ec 6fb9f6 65fb4c f47241 c8eca6 a1666d ba5769 69c4ab 4cc2ef 9635bd 
+##      2      0      0      2      0      0      0      1      0      1      0 
+## 226a55 b42467 55a24b c50bd7 bdbe4a 688dfe 62be40 1ad254 758088 c62376 20d053 
+##      0      0      0      0      1      0      0      0      0      0      0 
+## 8d0a15 6cddda 420c7e c9f979 4bb65e 73f728 3427d1 5cc81f 15e0a2 5b17ae 63c76b 
+##      1      0      0      0      0      1      0      1      1      0      0 
+## e0b6b1 d2dfb0 3b2ae3 e959dd fc8f0a ca2c61 fd4a39 fdaa92 6def8d 92b48e 77f183 
+##      0      1      2      0      1      1      0      0      0      0      1 
+## 96a3d4 8bdcd1 9b7ee3 62910b e2cff7 8da173 ee3831 a9107c 87d192 c0891f 80e6cf 
+##      1      0      0      0      1      0      0      0      1      0      0 
+## a8b1b9 24a268 3e763d df0754 a827f1 d04295 fdb1fd d5d522 f2dd52 cc22c5 2bf250 
+##      0      0      0      0      0      0      0      3      0      2      0 
+## 14b942 1643d8 8d5295 a0e81b 191866 aaf8a5 c5f40f f90512 2efabd 61e7e2 b083d0 
+##      0      0      0      0      0      0      0      3      0      0      0 
+## ab78a8 4abc1f 6af0c9 afa5ac ffc57e 0c2537 824388 a35a31 934d1f 23acdc 675e50 
+##      0      0      1      2      0      0      1      0      0      1      1 
+## 200a8a 60ce1f 68eca6 6fbf2f 02a723 60d1e7 949d49 235bb0 3aed70 ca8208 53a9e1 
+##      2      0      3      1      0      1      0      0      1      0      2 
+## abd770 ade3e9 830cd4 564958 22739e f7dcc9 f6dcd0 56f9a0 fa0cbf 5cc32a ebfad4 
+##      0      0      0      0      0      0      3      0      0      1      0 
+## 0db181 08b94c e18133 5a25c5 14230d 99eee9 786b8c 97c72a 36b5fd 0fc4a9 3b1ae8 
+##      0      0      2      0      0      0      0      1      3      0      0 
+## 7eacda a77361 b0014e bf0b5e 834a1f 643bb6 6b6de3 3556ce d8181f f4651a f0ff1f 
+##      0      0      0      2      0      2      2      0      0      2      0 
+## d91592 37e612 b18861 1dccec ec72f3 ee55ee fd4705 95dfcf 43d43d 97cc68 52ee65 
+##      0      1      0      2      0      0      0      0      1      0      0 
+## f37d64 4fcfcc d9e084 114944 9ec237 14544d 2942ce ab4e21 2dd798 986e99 02efe3 
+##      1      0      0      0      0      0      2      2      0      2      1 
+## adebd3 b23bea 30ad0e 5fe1a8 a05b57 51f8d6 36ea75 c6f68b 137813 eb6ae3 380567 
+##      0      1      1      0      1      0      0      0      0      1      0 
+## f5f0ec b3c7c2 3616d2 673d0c 74190b 2b883d ade522 cc4d42 e06706 661c0f dd269b 
+##      0      0      0      0      0      0      0      1      0      0      0 
+## 1b777f 748347 a5b60c f17dff 2fd955 4ec748 7964e3 c7ae66 4b5e3e 1efaa7 6ce753 
+##      0      3      0      0      1      0      0      0      0      1      0 
+## c5f7aa d3fdb6 a1cec3 3e81e0 d0c042 6c6621 cf9fa2 c49942 31abc3 72febb adcf52 
+##      0      1      0      2      1      0      0      1      0      0      0 
+## fffc9d a392c4 68bfa3 68b66d 66ff28 7e6407 8066c5 ab5fe1 7e2883 54b117 7c0110 
+##      0      0      1      1      0      0      1      3      0      1      1 
+## 4669b3 78869f fb5f91 e9315f c27215 bdf90b fc5d3c 5fd8c8 db54fe 170f6e 2c1bcf 
+##      0      1      0      0      0      0      0      0      0      0      1 
+## e8a6d2 bb3a44 2d4de7 c9753d da8297 ccd588 5bb696 95f49d 900b97 33b030 ddbfdf 
+##      0      0      0      0      0      0      0      2      0      0      0 
+## 4d7c73 2987c0 332f65 b58aad 2f51af 945c22 be537a b2dfdd 5b7fa8 897dfc 4c56a9 
+##      0      0      0      1      0      2      0      0      1      0      0 
+## 47b4ae 3c2fd4 ebef8d 2e3ed2 9dbf64 c0035e 1dc470 249e32 3348fa ca147f f05f3d 
+##      0      0      1      1      0      0      1      0      0      0      0 
+## 478c45 975680 92309f 7caaa2 065ba0 505dd4 146f6d 095df3 2d791e 711539 cde621 
+##      0      0      0      0      0      0      0      2      0      1      0 
+## 241a7d 140111 d73166 50548e 86913a 768f5e defe6a d5870f 18a6d4 1af5cc a49469 
+##      2      0      1      2      0      0      0      0      1      0      0 
+## 22d644 70e019 90239b 2acf57 0607f9 bb8128 3ae4d6 71a4ae ec8fca c0a01d 559cce 
+##      0      0      0      0      0      0      1      0      0      0      0 
+## 1c5a11 3930fb 957384 89a9a9 e46a61 3d9daf c6513a 1b2feb 2603fb 1c398f 738f5d 
+##      0      0      0      1      0      0      0      0      1      2      1 
+## 3b8f45 188d1e 6dcae2 abaf55 1cafff 99e12e 1f0436 ca0e92 1e900f 61d786 cf05f9 
+##      0      0      0      0      0      0      1      0      3      0      0 
+## f47682 d8117d 70dee3 95b138 a6757c b8ca5d 73c73a a30ff8 07c5fb b90477 7525ac 
+##      0      1      0      0      0      0      2      0      0      0      0 
+## b3e1a6 a7ca26 fdafe3 fc674a ee738a 22ab70 7a9d42 038f4d bd7102 a568bb 16f847 
+##      0      0      0      0      0      0      0      1      0      0      0 
+## 9dfab3 722b8f 238749 bf63fa 7f3040 31ab14 69b5f1 61e513 a0217b 1da7df 98e7b4 
+##      1      0      1      0      0      0      0      0      0      0      1 
+## bce608 b70d13 7ebc55 c80978 f390df ed1e89 a9c48f 4ca38f aaea82 d2ce23 e4cbf4 
+##      0      0      0      0      0      0      0      0      0      0      1 
+## 5da5c7 cad7d9 c502c5 adcd97 8c06b3 17c056 a392b7 445a48 6e8bba 456585 704af6 
+##      0      0      0      0      0      1      0      2      2      0      2 
+## 0283ed fb4316 e7433f 128a51 e4cc2b f5dccc 85f387 4a74e6 e8b57f 8c97e2 6ee878 
+##      0      0      0      0      0      3      0      0      0      0      1 
+## 620b62 4a36c0 be98bf 9d8c54 724d69 99a397 3eb2ba c8a055 adbb4a 4798d2 3d9b03 
+##      0      2      1      1      0      1      0      0      0      0      0 
+## f713bf 934ba5 8763d8 162f96 427fb1 05a71f 8fc47f b18217 489045 8e0af5 91d95c 
+##      1      0      0      1      0      0      2      0      0      1      0 
+## 8cea8b 036c25 b759bd 86e298 4b553c 793a9a 37a318 f2576a b9179e 180f2d 139b17 
+##      0      0      3      0      0      0      0      0      0      0      0 
+## fe0f19 20a51f 316b9a cfa80e feeab5 bda51a c104fd fbb3ca 8c5c82 83bad0 6bf544 
+##      1      0      1      1      1      0      0      0      1      1      0 
+## 0957e1 0bfc05 d84fd8 82eefd 0b13d0 ee8b49 bc6660 96ffbe 87c86b e0f9ef 9faf1e 
+##      1      0      0      2      1      0      2      0      0      0      0 
+## a7bc09 ecce9c 80b55a 25446e 4d9088 bc9b98 27488a b4f910 b448f0 bbd8cf d0be9d 
+##      0      1      0      0      0      0      1      1      0      1      1 
+## bdb7da aeea23 f9a362 15b9b4 2ddf38 b796bd 680f1b 3cfdf5 8d77ce 38027f a23b03 
+##      0      0      0      0      0      1      0      0      0      1      0 
+## 065ece 606cc4 89903c bd030e 06447a 53847f dee16d 15f9e2 389175 d1c2fa 5c9681 
+##      0      1      0      0      1      0      0      0      1      0      1 
+## 2afa31 d2c80d 6eac07 419f21 3e7d2b 0d1fc6 466c3b 24d506 690259 e6e404 a2ac7e 
+##      1      0      0      0      0      0      1      0      2      1      0 
+## e91bb5 827e4d 4ee1dd 76ac25 83dea4 c1b99b 6026c7 a2f0d5 0c8e73 15da23 97d8a8 
+##      0      0      0      0      0      0      0      2      0      1      0 
+## 540cb3 cb5c5b 9d7c1f a91cff bcaf9e 5395ec 97f1fc 0600ac 8501fe 2d569f 364c6c 
+##      0      0      1      0      0      0      1      3      0      0      0 
+## 6d6dbb 62a764 923c4c 49a9c5 6c4df5 916793 420e08 11e7a6 5cece1 c18cee 476cfb 
+##      1      0      0      1      0      0      0      0      0      0      0 
+## 6a968f 4ffa4b f5634f 790321 f68cab f8e561 1828bf 3f9246 27dd47 2cde79 c14b2b 
+##      0      0      0      0      1      0      0      0      0      0      1 
+## 63607f f9f101 2854a3 6347e7 0b54b3 9f685f aeac1e 64ad98 a799b5 f10c41 3bba00 
+##      0      1      0      1      0      0      2      0      0      1      0 
+## bb889e 0c9550 615c91 e6da7f 00d25b c60bcb bb67a9 ef309f 88206d af2809 9058f6 
+##      0      0      0      1      0      0      0      0      0      0      1 
+## ad7ec4 45ce63 2b7efd 3c1944 740f39 2ed933 dab0c9 a8a470 ba638b 33deff b74af7 
+##      1      2      0      0      0      0      0      0      1      0      0 
+## 0b3986 668a25 d3d026 9e0b3f b6b4d3 166b5b 9e99f4 3ad7c4 d12222 f4c35a e59e18 
+##      0      0      0      0      0      0      0      0      0      0      0 
+## ea630b dd9090 cc3e84 52b16e 59f810 abd392 699c88 cc5040 f06cde 0fd97d 3cb126 
+##      2      0      0      0      0      0      1      0      1      2      1 
+## b5c7f2 f3719c 634beb 147cf7 d78e46 8128c0 704621 908686 1655de 425802 21ea92 
+##      0      0      0      0      0      0      1      0      0      0      0 
+## 9db487 50eafd 2314ad 02a954 2afe7c 836bed 2d7c2b be2e8b 0ef5f8 231d93 fac717 
+##      0      0      0      0      0      0      0      0      0      0      0 
+## 126e1c 0544ce 2f22a3 8c6a51 b0fc8c 374b59 9dd60a 44db04 a2d142 2dbe33 4c9078 
+##      0      1      1      1      1      0      0      0      0      0      0 
+## a148fa fccbf5 2e893b 028cee ce6ce0 f144de 615929 7b0e09 ea85e8 841429 81f8ee 
+##      1      0      0      2      1      1      1      0      0      1      0 
+## 43912c 1d7c22 db7f71 c529a2 1a320f d6a3a0 e4473c bc5870 cc6729 bbf39f 2e2b73 
+##      1      0      0      1      0      0      0      0      0      1      0 
+## e0b275 241b41 8eb172 e6d994 4799df 3da96a 50f681 e8de39 a9e570 bcda77 2ab6c0 
+##      0      2      0      0      0      0      0      1      0      0      0 
+## 901d4a 23a675 cbb8f4 89d357 f6a2c3 4589d7 29af75 76d8fe 287458 358739 6a380e 
+##      0      0      0      0      1      2      0      0      0      0      0 
+## 83e699 ca1aee cd776c 07e9fb e04ac4 1bd38b c4d7e3 a1021c 0256b1 10d1de dd6664 
+##      0      1      0      0      0      1      0      0      0      0      0 
+## b8969e 801839 ba5658 2363e1 ea0bce 40d948 635ef3 7c3354 4b859a e0159d 602aa1 
+##      1      0      0      0      0      0      0      0      0      0      1 
+## 58d0b1 f0cafa 947c61 6d716c 40db65 254509 c1fc7b 54d760 e37efd 928429 01c751 
+##      0      0      0      0      0      0      0      0      0      2      0 
+## 632cc9 47bde4 88761b 1f9f0f 313188 7c302d 82eba1 02e044 16bbcc bee5e8 fe494f 
+##      0      0      0      0      0      0      0      0      0      0      0 
+## 643d16 061d90 0a133e ddbb95 cb78e4 7f0cc8 2068d6 5f53f7 e7e88e 534b3c 
+##      0      0      0      0      0      0      0      0      0      0
+\end{verbatim}
+
+\subsection{5. Plot Degree Distribution}\label{plot-degree-distribution}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Histogram of secondary cases}
+\FunctionTok{hist}\NormalTok{(secondary\_cases, }
+     \AttributeTok{breaks =} \DecValTok{30}\NormalTok{,}
+     \AttributeTok{main =} \StringTok{"Degree Distribution of Secondary Cases"}\NormalTok{,}
+     \AttributeTok{xlab =} \StringTok{"Number of Secondary Cases"}\NormalTok{,}
+     \AttributeTok{ylab =} \StringTok{"Frequency"}\NormalTok{,}
+     \AttributeTok{col =} \StringTok{"lightblue"}\NormalTok{,}
+     \AttributeTok{border =} \StringTok{"black"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ebola_superspreading_analysis_files/figure-latex/plot-distribution-1.pdf}}
+
+\subsection{6. Fit a Negative Binomial
+Distribution}\label{fit-a-negative-binomial-distribution}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Fit negative binomial to secondary cases}
+\NormalTok{fitnb }\OtherTok{\textless{}{-}}\NormalTok{ fitdistrplus}\SpecialCharTok{::}\FunctionTok{fitdist}\NormalTok{(secondary\_cases, }\StringTok{"nbinom"}\NormalTok{)}
+\FunctionTok{print}\NormalTok{(fitnb)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Fitting of the distribution ' nbinom ' by maximum likelihood 
+## Parameters:
+##       estimate  Std. Error
+## size 0.8539443 0.072505326
+## mu   0.3675993 0.009497097
+\end{verbatim}
+
+\begin{quote}
+The negative binomial distribution is characterized by two parameters: -
+\texttt{size} (k): Dispersion parameter - \texttt{mu}: Mean number of
+secondary cases
+
+Example estimates might look like: - size = 0.854 - mu = 0.368
+\end{quote}
+
+\subsection{7. Superspreading Risk
+Assessment}\label{superspreading-risk-assessment}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Estimate probability of clusters from backward tracing}
+\NormalTok{superspreading}\SpecialCharTok{::}\FunctionTok{proportion\_cluster\_size}\NormalTok{(}
+  \AttributeTok{R =}\NormalTok{ fitnb}\SpecialCharTok{$}\NormalTok{estimate[}\StringTok{"mu"}\NormalTok{],}
+  \AttributeTok{k =}\NormalTok{ fitnb}\SpecialCharTok{$}\NormalTok{estimate[}\StringTok{"size"}\NormalTok{],}
+  \AttributeTok{cluster\_size =} \FunctionTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{15}\NormalTok{)}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##           R         k prop_5 prop_10 prop_15
+## 1 0.3675993 0.8539443   2.5% 0.0272%      0%
+\end{verbatim}
+
+\subsection{8. Interpretation}\label{interpretation}
+
+\begin{quote}
+Using the estimated parameters (R ≈ 0.368, k ≈ 0.854), the chance of a
+backward-traced case causing: - ≥5 secondary cases: \textasciitilde2.6\%
+- ≥10 or ≥15 secondary cases: near 0\%
+
+\subsubsection{📌 Implication:}\label{implication}
+
+Backward tracing likely provides limited added value for containing
+Ebola transmission in this scenario, as the superspreading potential is
+low.
+\end{quote}
+
+\end{document}
